@@ -1,0 +1,10 @@
+target
+.env
+.idea/
+.gradle/
+gradle.properties
+*.iml
+/youtrack
+/hub
+# Project exclude paths
+/build/
