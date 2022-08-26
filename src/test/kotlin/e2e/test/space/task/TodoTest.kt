@@ -1,4 +1,4 @@
-package e2e.test.space
+package e2e.test.space.task
 
 import e2e.model.Url
 import e2e.model.User

@@ -1,17 +1,22 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite verbose="1" configfailurepolicy="continue" thread-count="1" parallel="tests" name="e2e">
+<suite verbose="1" configfailurepolicy="continue" thread-count="3" parallel="tests" name="e2e">
     <parameter name="selenium" value="http://selenium-hub:4444"/>
     <parameter name="url" value="https://e2e.jetbrains.space"/>
     <parameter name="browser" value="CHROME"/>
     <parameter name="headless" value="true"/>
-    <test parallel="classes" name="google" thread-count="1">
+    <test parallel="classes" name="space login" thread-count="1">
         <packages>
-            <package name="e2e.test.google.*"/>
+            <package name="e2e.test.space.login"/>
         </packages>
     </test>
-    <test parallel="classes" name="main functionality" thread-count="1">
+    <test parallel="classes" name="page navigation" thread-count="1">
         <packages>
-            <package name="e2e.test.space.*"/>
+            <package name="e2e.test.space.navigation"/>
+        </packages>
+    </test>
+    <test parallel="classes" name="task" thread-count="1">
+        <packages>
+            <package name="e2e.test.space.task"/>
         </packages>
     </test>
 </suite>
