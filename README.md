@@ -1,4 +1,4 @@
-# Selenium-kotlin-e2e
+# Selenium-Kotlin-e2e
 
 Selenium end-to-end tests for [Space](https://www.jetbrains.com/space/) done with a help of [testee](https://github.com/hibissscus/testee) framwork.
 
