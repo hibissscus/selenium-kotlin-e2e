@@ -1,4 +1,4 @@
-name: E2E space test
+name: CI e2e space test
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run e2e tests
         env:

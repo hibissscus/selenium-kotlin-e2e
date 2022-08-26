@@ -1,6 +1,6 @@
 # selenium-kotlin-e2e
 
-Selenium end to end tests for Space.
+Selenium end-to-end tests for Space.
 
 ## Getting Started
 
