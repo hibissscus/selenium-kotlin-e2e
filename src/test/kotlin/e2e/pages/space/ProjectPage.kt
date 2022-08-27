@@ -1,7 +1,6 @@
 package e2e.pages.space
 
 import e2e.model.PageTitles
-import e2e.pages.NavigationPage
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy

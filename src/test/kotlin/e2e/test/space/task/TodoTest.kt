@@ -24,15 +24,53 @@ class TodoTest : TestBase(url = Url.SPACE.url) {
     }
 
     @Test
-    fun `02 todo list test`() {
+    fun `02 todo list navigation`() {
         HomePage(driver)
             .goTo(TodoPage(driver))
             .selectTab("History")
-            .selectTab("Today")
-            .addTask(task1.name)
-            .addTask(task2.name)
-            .waitForSeconds(3)
             .selectTab("Later")
-            .waitForSeconds(3)
+            .selectTab("Today")
+    }
+
+    @Test
+    fun `03 todo addTask`() {
+        TodoPage(driver)
+            .addTask(task1.name)
+            .waitForSeconds(2)
+    }
+
+    @Test
+    fun `04 todo select task`() {
+        TodoPage(driver)
+            .selectTask(task1.name)
+            .waitForSeconds(2)
+    }
+
+    @Test
+    fun `05 todo un-select task`() {
+        TodoPage(driver)
+            .selectTask(task1.name)
+            .waitForSeconds(2)
+    }
+
+    @Test
+    fun `06 todo delete task`() {
+        TodoPage(driver)
+            .deleteTask(task1.name)
+            .waitForSeconds(2)
+    }
+
+    @Test
+    fun `07 todo undo deleted task`() {
+        TodoPage(driver)
+            .undoDeletedTask()
+            .waitForSeconds(2)
+    }
+
+    @Test
+    fun `08 todo deleted task finally`() {
+        TodoPage(driver)
+            .deleteTask(task1.name)
+            .waitForSeconds(5)
     }
 }

@@ -1,11 +1,6 @@
-package e2e.pages
+package e2e.pages.space
 
-import e2e.pages.space.AdminPage
-import e2e.pages.space.BlogPage
-import e2e.pages.space.LoginPage
-import e2e.pages.space.ProjectPage
-import e2e.pages.space.TeamPage
-import e2e.pages.space.TodoPage
+import e2e.pages.BasePage
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
