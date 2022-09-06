@@ -7,6 +7,7 @@ import e2e.pages.BasePage.Companion.waitForSeconds
 import e2e.pages.space.HomePage
 import e2e.pages.space.LoginPage
 import e2e.pages.space.TodoPage
+import org.testng.SkipException
 import org.testng.annotations.Test
 import testee.it.e2e.core.test.TestBase
 
@@ -73,5 +74,17 @@ class TodoTest : TestBase(url = Url.SPACE.url) {
         TodoPage(driver)
             .deleteTask(task1.name)
             .waitForSeconds(5)
+    }
+
+    @Test
+    fun `09 some exception`() {
+        // just for demonstration purposes
+        assert(false) { "this test failed" }
+    }
+
+    @Test
+    fun `10 skipped test`() {
+        // just for demonstration purposes
+        throw SkipException("this will be skipped")
     }
 }
