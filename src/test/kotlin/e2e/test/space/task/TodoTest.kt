@@ -36,6 +36,7 @@ class TodoTest : TestBase(url = Url.SPACE.url) {
     fun `03 todo addTask`() {
         TodoPage(driver)
             .addTask(task1.name)
+            // just for demonstration purposes
             .waitForSeconds(2)
     }
 
