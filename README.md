@@ -29,8 +29,6 @@ HTTPS clone URL: https://github.com/hibissscus/selenium-kotlin-e2e.git
 4. For `Selenium` dockerization use [docker-compose.yml](https://github.com/hibissscus/selenium-kotlin-e2e/blob/master/docker-compose.yml)
     - `docker-compose up e2e`
     - `docker-compose down`
-    
-    https://github.com/hibissscus/selenium-kotlin-e2e/actions/runs/3003484241#:~:text=Size-,e2e_reports,-214%20KB
 
 
 ### Authors
