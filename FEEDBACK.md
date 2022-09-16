@@ -6,7 +6,7 @@
 - [ ] Необходимость запускать тесты в хардкорной последовательности
 - [ ] Невозможно запустить один тест из IDE (п3) (все кроме логина)
 
-### Мысли из замечания:
+### Мысли и замечания:
 
 - [ ] Почему бы не сделать не на GH actions, а на Space automation? - мы могли бы сделать там ревью.
 - [ ] docker-compose - зачем 3 ноды хрома? Можно скалировать сервис.
@@ -27,7 +27,7 @@
 
 ### Minor:
 
-- [ ] doc: brew cask install chromedriver - Error: brew cask is no longer a brew command. Use brew <command> --cask instead.
+- [x] doc: brew cask install chromedriver - Error: brew cask is no longer a brew command. Use brew <command> --cask instead.
 - [ ] gradle issue - повторный запуск тестов из command line не запускает тесты
 ``
 ./gradlew test --tests "e2e.test.space.navigation.NavigationTest
