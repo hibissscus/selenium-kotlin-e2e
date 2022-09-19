@@ -4,8 +4,8 @@ plugins {
 }
 
 group = "ys-e2e"
-version = "1.0.1"
-description = "1.0.1"
+version = "1.0.2"
+description = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -20,7 +20,7 @@ dependencies {
     // testng
     implementation("org.testng:testng:7.5")
     // testee + reportng
-    implementation("com.github.hibissscus:testee:1.6.3")
+    implementation("com.github.hibissscus:testee:1.6.4")
 }
 
 tasks {

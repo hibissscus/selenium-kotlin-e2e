@@ -1,13 +1,9 @@
-package e2e.space.pages.space
+package e2e.space.pages
 
-import e2e.space.pages.BasePage
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.support.ui.ExpectedConditions
-import org.openqa.selenium.support.ui.ExpectedConditions.attributeContains
-import org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated
 
 abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
@@ -33,18 +29,18 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = scrollableTabs_)
     protected lateinit var scrollableTabs: WebElement
 
-    override fun isOpened(s: String): NavigationPage = apply {
-        wait().until(presenceOfElementLocated(By.cssSelector(app_)))
-        wait().until(presenceOfElementLocated(By.cssSelector(dialog_)))
-        wait().until(presenceOfElementLocated(By.cssSelector(loader_)))
+    override fun opened(s: String): NavigationPage = apply {
+        presence(By.cssSelector(app_))
+        presence(By.cssSelector(dialog_))
+        presence(By.cssSelector(loader_))
     }
 
     /**
      * Check that on [NavigationPage] are no loading process.
      */
-    override fun isLoaded(): NavigationPage = apply {
-        waitForLoaded()
-        wait().until(attributeContains(loader, "class", "XLoaderStyles-invisibleLoader"))
+    override fun loaded(): NavigationPage = apply {
+        super.loaded()
+        attributeContains(loader, "class", "XLoaderStyles-invisibleLoader")
     }
 
     @FindBy(css = ".AppStyles-Navigation-item [aria-label='Chats']")
@@ -88,20 +84,12 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
     fun clickOnTab(tabName: String): NavigationPage = apply {
         visible(scrollableTabs)
-        val tabElement = wait().until(
-            ExpectedConditions.visibilityOfNestedElementsLocatedBy(
-                By.cssSelector(scrollableTabs_),
-                By.xpath(".//*[contains(text(),'${tabName}')]")
-            )
+        val tabElement = visibleAsNested(
+            By.cssSelector(scrollableTabs_),
+            By.xpath(".//*[contains(text(),'${tabName}')]")
         ).first()
         click(tabElement)
-        wait().until(
-            attributeContains(
-                tabElement,
-                "class",
-                "XTabsStyles-selectedTab"
-            )
-        )
+        attributeContains(tabElement, "class", "XTabsStyles-selectedTab")
     }
 
     fun logout(): LoginPage {

@@ -1,12 +1,10 @@
-package e2e.space.pages.space
+package e2e.space.pages
 
 import e2e.space.model.User
-import e2e.space.pages.BasePage
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.support.ui.ExpectedConditions.frameToBeAvailableAndSwitchToIt
 
 class LoginPage(driver: WebDriver) : BasePage(driver) {
 
@@ -33,8 +31,10 @@ class LoginPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = submit_)
     private lateinit var submit: WebElement
 
-    override fun isOpened(s: String): LoginPage = apply {
-        wait().until(frameToBeAvailableAndSwitchToIt(frame))
+    override fun opened(s: String): LoginPage = apply {
+        if (isPresent(By.cssSelector(frame_))) {
+            frameAvailableAndSwitchToIt(frame)
+        }
         textToBe(realmName, s)
     }
 

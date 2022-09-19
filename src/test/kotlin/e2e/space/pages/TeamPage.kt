@@ -1,10 +1,9 @@
-package e2e.space.pages.space
+package e2e.space.pages
 
 import e2e.space.model.PageTitles
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElement
 
 class TeamPage(driver: WebDriver) : NavigationPage(driver) {
 
@@ -15,8 +14,8 @@ class TeamPage(driver: WebDriver) : NavigationPage(driver) {
     @FindBy(css = menuLogo_)
     private lateinit var menuLogo: WebElement
 
-    override fun isOpened(s: String): TeamPage = apply {
-        wait().until(textToBePresentInElement(sidebarHeader, PageTitles.TEAMS.title))
+    override fun opened(s: String): TeamPage = apply {
+        textToBe(sidebarHeader, PageTitles.TEAMS.title)
     }
 
 }

@@ -1,4 +1,4 @@
-package e2e.space.pages.space
+package e2e.space.pages
 
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
@@ -28,7 +28,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     @FindBy(css = newTask_)
     private lateinit var newTask: WebElement
 
-    override fun isOpened(s: String): TodoPage = apply {
+    override fun opened(s: String): TodoPage = apply {
         visible(newTask)
     }
 
@@ -42,6 +42,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     fun selectTask(taskName: String): TodoPage = apply {
+
         wait().until(
             presenceOfNestedElementLocatedBy(
                 By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),

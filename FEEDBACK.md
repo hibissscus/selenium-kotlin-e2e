@@ -1,7 +1,8 @@
 ### Что хотелось бы улучшить:
 
 - [ ] Тестов мало, хотелось бы увидеть больше кейсов, которых ты посчитаешь нужными;
-- [ ] В тех тестах, что есть, не хватает ассертов. E.g: e2e.space.test.task.TodoTest#02 todo list navigation - кажется, что проверки на стиль табика недостаточно
+- [ ] В тех тестах, что есть, не хватает ассертов. E.g: e2e.space.test.task.TodoTest#02 todo list navigation - кажется, что проверки на стиль табика
+  недостаточно
 - [ ] Логин тест в каждом классе - не очень хорошее решение
 - [ ] Необходимость запускать тесты в хардкорной последовательности
 - [ ] Невозможно запустить один тест из IDE (п3) (все кроме логина)
@@ -29,13 +30,13 @@
 
 - [x] doc: brew cask install chromedriver - Error: brew cask is no longer a brew command. Use brew <command> --cask instead.
 - [ ] gradle issue - повторный запуск тестов из command line не запускает тесты
-``
-./gradlew test --tests "e2e.space.test.navigation.NavigationTest
-BUILD SUCCESSFUL in 1s
-3 actionable tasks: 3 up-to-date
-``
-``
-BUILD SUCCESSFUL in 1s
-3 actionable tasks: 3 up-to-date
-``
+  ``
+  ./gradlew test --tests "e2e.space.test.navigation.NavigationTest
+  BUILD SUCCESSFUL in 1s
+  3 actionable tasks: 3 up-to-date
+  ``
+  ``
+  BUILD SUCCESSFUL in 1s
+  3 actionable tasks: 3 up-to-date
+  ``
 - [ ] Хотелось бы конфигурацию для запуска тестов с браузерами в докере. И репорт, чтобы можно было посмотреть.

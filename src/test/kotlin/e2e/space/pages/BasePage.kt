@@ -2,7 +2,6 @@ package e2e.space.pages
 
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.support.ui.ExpectedConditions
 import testee.it.e2e.core.pages.AbstractPage
 import testee.it.e2e.core.pages.WaitForSeconds
 import java.time.LocalDate
@@ -24,13 +23,22 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
         return 3
     }
 
-    abstract fun isOpened(s: String = ""): BasePage
+    abstract fun opened(s: String = ""): BasePage
 
-    open fun isLoaded(): BasePage = apply {
+    open fun loaded(): BasePage = apply {
         waitForLoaded()
     }
 
     companion object {
+        /**
+         * General wait for page source to be loaded with [maxWaitMillis] timeout
+         * and pool of [pollDelimiterMillis]
+         */
+        fun <P : BasePage> P.loaded(maxWaitMillis: Int = waitMax().toInt() * 1000, pollDelimiterMillis: Int = 500): P {
+            waitForLoaded(maxWaitMillis, pollDelimiterMillis)
+            return this
+        }
+
         /**
          * Waiting for amount of seconds on the [WaitForSeconds]
          *
@@ -64,7 +72,7 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
          */
         fun <P : BasePage, T : BasePage> P.view(element: WebElement, page: T, title: String = ""): T {
             click(element)
-            page.isLoaded().isOpened(title)
+            page.loaded().opened(title)
             return page
         }
 
@@ -72,7 +80,7 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
          * View specific [BasePage] and check that on [BasePage] are no loading process
          */
         fun <P : BasePage, T : BasePage> P.view(page: T, title: String = ""): T {
-            page.isLoaded().isOpened(title)
+            page.loaded().opened(title)
             return page
         }
     }
@@ -81,11 +89,4 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
         driver().navigate().to(url)
     }
 
-    fun urlContains(url: String) {
-        wait().until(ExpectedConditions.urlContains(url))
-    }
-
-    fun titleIs(title: String) {
-        wait().until(ExpectedConditions.titleIs(title))
-    }
 }

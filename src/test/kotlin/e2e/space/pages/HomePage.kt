@@ -1,10 +1,9 @@
-package e2e.space.pages.space
+package e2e.space.pages
 
 import e2e.space.model.User
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.support.ui.ExpectedConditions.attributeContains
 
 class HomePage(driver: WebDriver) : NavigationPage(driver) {
 
@@ -19,16 +18,16 @@ class HomePage(driver: WebDriver) : NavigationPage(driver) {
     @FindBy(css = userLogo_)
     private lateinit var userLogo: WebElement
 
-    override fun isOpened(s: String): HomePage = apply {
+    override fun opened(s: String): HomePage = apply {
         titleIs("e2e — Space")
         textToBe(title, "Personal navigation")
     }
 
     fun isUserNamePresent(user: User): HomePage = apply {
-        wait().until(attributeContains(userLogo, "aria-label", user.uiName))
+        attributeContains(userLogo, "aria-label", user.uiName)
     }
 
     fun isUserNamePresent(name: String): HomePage = apply {
-        wait().until(attributeContains(userLogo, "aria-label", name))
+        attributeContains(userLogo, "aria-label", name)
     }
 }
