@@ -3,11 +3,6 @@
     <parameter name="url" value="https://e2e.jetbrains.space"/>
     <parameter name="browser" value="CHROME"/>
     <parameter name="headless" value="false"/>
-    <test parallel="classes" name="google" thread-count="1">
-        <packages>
-            <package name="e2e.test.google.*"/>
-        </packages>
-    </test>
     <test parallel="classes" name="main functionality" thread-count="2">
         <packages>
             <package name="e2e.space.test.*"/>
