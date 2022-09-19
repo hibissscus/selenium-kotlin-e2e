@@ -30,9 +30,9 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     protected lateinit var scrollableTabs: WebElement
 
     override fun opened(s: String): NavigationPage = apply {
-        presence(By.cssSelector(app_))
-        presence(By.cssSelector(dialog_))
-        presence(By.cssSelector(loader_))
+        presenceOf(By.cssSelector(app_))
+        presenceOf(By.cssSelector(dialog_))
+        presenceOf(By.cssSelector(loader_))
     }
 
     /**
@@ -83,8 +83,8 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     }
 
     fun clickOnTab(tabName: String): NavigationPage = apply {
-        visible(scrollableTabs)
-        val tabElement = visibleAsNested(
+        visibilityOf(scrollableTabs)
+        val tabElement = visibilityOfNestedElementsLocatedBy(
             By.cssSelector(scrollableTabs_),
             By.xpath(".//*[contains(text(),'${tabName}')]")
         ).first()

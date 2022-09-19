@@ -33,7 +33,7 @@ class LoginPage(driver: WebDriver) : BasePage(driver) {
 
     override fun opened(s: String): LoginPage = apply {
         if (isPresent(By.cssSelector(frame_))) {
-            frameAvailableAndSwitchToIt(frame)
+            frameToBeAvailableAndSwitchToIt(frame)
         }
         textToBe(realmName, s)
     }
