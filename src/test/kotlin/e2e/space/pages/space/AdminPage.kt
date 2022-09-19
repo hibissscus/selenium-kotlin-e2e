@@ -1,6 +1,6 @@
-package e2e.pages.space
+package e2e.space.pages.space
 
-import e2e.model.PageTitles
+import e2e.space.model.PageTitles
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement

@@ -1,6 +1,6 @@
-package e2e.pages.space
+package e2e.space.pages.space
 
-import e2e.model.User
+import e2e.space.model.User
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy

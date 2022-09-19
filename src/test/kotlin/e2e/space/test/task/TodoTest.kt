@@ -1,12 +1,12 @@
-package e2e.test.space.task
+package e2e.space.test.task
 
-import e2e.model.Url
-import e2e.model.User
-import e2e.pages.BasePage.Companion.view
-import e2e.pages.BasePage.Companion.waitForSeconds
-import e2e.pages.space.HomePage
-import e2e.pages.space.LoginPage
-import e2e.pages.space.TodoPage
+import e2e.space.model.Url
+import e2e.space.model.User
+import e2e.space.pages.BasePage.Companion.view
+import e2e.space.pages.BasePage.Companion.waitForSeconds
+import e2e.space.pages.space.HomePage
+import e2e.space.pages.space.LoginPage
+import e2e.space.pages.space.TodoPage
 import org.testng.SkipException
 import org.testng.annotations.Test
 import testee.it.e2e.core.test.TestBase

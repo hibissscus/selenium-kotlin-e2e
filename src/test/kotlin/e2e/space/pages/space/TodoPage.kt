@@ -1,4 +1,4 @@
-package e2e.pages.space
+package e2e.space.pages.space
 
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys

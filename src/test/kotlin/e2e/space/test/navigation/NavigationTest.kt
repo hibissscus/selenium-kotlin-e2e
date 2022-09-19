@@ -1,14 +1,14 @@
-package e2e.test.space.navigation
+package e2e.space.test.navigation
 
-import e2e.model.Url
-import e2e.model.User
-import e2e.pages.BasePage.Companion.view
-import e2e.pages.space.AdminPage
-import e2e.pages.space.BlogPage
-import e2e.pages.space.HomePage
-import e2e.pages.space.LoginPage
-import e2e.pages.space.ProjectPage
-import e2e.pages.space.TeamPage
+import e2e.space.model.Url
+import e2e.space.model.User
+import e2e.space.pages.BasePage.Companion.view
+import e2e.space.pages.space.AdminPage
+import e2e.space.pages.space.BlogPage
+import e2e.space.pages.space.HomePage
+import e2e.space.pages.space.LoginPage
+import e2e.space.pages.space.ProjectPage
+import e2e.space.pages.space.TeamPage
 import org.testng.annotations.Test
 import testee.it.e2e.core.test.TestBase
 

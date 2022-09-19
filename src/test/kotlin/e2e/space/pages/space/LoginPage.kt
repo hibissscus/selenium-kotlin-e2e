@@ -1,7 +1,7 @@
-package e2e.pages.space
+package e2e.space.pages.space
 
-import e2e.model.User
-import e2e.pages.BasePage
+import e2e.space.model.User
+import e2e.space.pages.BasePage
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement

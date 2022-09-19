@@ -1,4 +1,4 @@
-package e2e.model
+package e2e.space.model
 
 enum class PageTitles(val title: String) {
     PROJECTS("Projects"),

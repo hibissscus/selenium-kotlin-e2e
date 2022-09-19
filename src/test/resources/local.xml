@@ -10,7 +10,7 @@
     </test>
     <test parallel="classes" name="main functionality" thread-count="2">
         <packages>
-            <package name="e2e.test.space.*"/>
+            <package name="e2e.space.test.*"/>
         </packages>
     </test>
 </suite>
