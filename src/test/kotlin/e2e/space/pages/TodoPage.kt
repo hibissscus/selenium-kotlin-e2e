@@ -26,7 +26,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     private lateinit var newTask: WebElement
 
     override fun opened(s: String): TodoPage = apply {
-        visibilityOf(newTask)
+        visible(newTask)
     }
 
     fun selectTab(tabName: String): TodoPage = apply {
@@ -47,7 +47,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
 
     fun deleteTask(taskName: String): TodoPage = apply {
         Actions(driver).moveToElement(
-            presenceOf(
+            presence(
                 By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
             )
         ).click().perform()

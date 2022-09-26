@@ -18,7 +18,7 @@ dependencies {
     // selenium
     implementation("org.seleniumhq.selenium:selenium-java:4.4.0")
     // testng
-    implementation("org.testng:testng:7.5")
+    implementation("org.testng:testng:7.6.1")
     // testee + reportng
     implementation("com.github.hibissscus:testee:1.6.4")
 }
@@ -29,7 +29,7 @@ tasks {
         group = "verification"
         useTestNG {
             suites("src/test/resources/local.xml")
-            useDefaultListeners = false
+            useDefaultListeners = true
             listeners = setOf("testee.it.reportng.HTMLReporter")
             systemProperties = mapOf(
                 "testee.it.reportng.title" to "e2e-space",

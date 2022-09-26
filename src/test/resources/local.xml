@@ -3,9 +3,19 @@
     <parameter name="url" value="https://e2e.jetbrains.space"/>
     <parameter name="browser" value="CHROME"/>
     <parameter name="headless" value="false"/>
-    <test parallel="classes" name="main functionality" thread-count="2">
+    <test parallel="classes" name="login" thread-count="1">
         <packages>
-            <package name="e2e.space.test.*"/>
+            <package name="e2e.space.test.login.*"/>
+        </packages>
+    </test>
+    <test parallel="classes" name="navigation" thread-count="1">
+        <packages>
+            <package name="e2e.space.test.navigation.*"/>
+        </packages>
+    </test>
+    <test parallel="classes" name="task" thread-count="1">
+        <packages>
+            <package name="e2e.space.test.task.*"/>
         </packages>
     </test>
 </suite>
