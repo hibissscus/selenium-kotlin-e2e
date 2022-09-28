@@ -10,8 +10,8 @@ class TaskTest : LoginBase() {
 
     private val task1 = TodoPage.State()
 
-    @Test
-    fun `list navigation`() {
+    @Test(description = "tab navigation: open task page on today's tab")
+    fun `tab navigation`() {
         login(User.KING)
             .goTo(TodoPage(driver))
             .selectTab("History")
@@ -19,37 +19,37 @@ class TaskTest : LoginBase() {
             .selectTab("Today")
     }
 
-    @Test(dependsOnMethods = ["list navigation"])
+    @Test(dependsOnMethods = ["tab navigation"])
     fun `add task`() {
         TodoPage(driver)
             .addTask(task1.name)
     }
 
-    @Test(dependsOnMethods = ["list navigation", "add task"])
+    @Test(dependsOnMethods = ["tab navigation", "add task"])
     fun `select task`() {
         TodoPage(driver)
             .selectTask(task1.name)
     }
 
-    @Test(dependsOnMethods = ["list navigation", "add task", "select task"])
+    @Test(dependsOnMethods = ["tab navigation", "add task", "select task"])
     fun `un-select task`() {
         TodoPage(driver)
             .selectTask(task1.name)
     }
 
-    @Test(dependsOnMethods = ["list navigation", "add task", "select task", "un-select task"])
+    @Test(dependsOnMethods = ["tab navigation", "add task", "select task", "un-select task"])
     fun `delete task`() {
         TodoPage(driver)
             .deleteTask(task1.name)
     }
 
-    @Test(dependsOnMethods = ["list navigation", "add task", "select task", "un-select task", "delete task"])
+    @Test(dependsOnMethods = ["tab navigation", "add task", "select task", "un-select task", "delete task"])
     fun `undo deleted task`() {
         TodoPage(driver)
             .undoDeletedTask()
     }
 
-    @Test(dependsOnMethods = ["list navigation", "add task", "select task", "un-select task", "delete task", "undo deleted task"])
+    @Test(dependsOnMethods = ["tab navigation", "add task", "select task", "un-select task", "delete task", "undo deleted task"])
     fun `deleted task finally`() {
         TodoPage(driver)
             .deleteTask(task1.name)

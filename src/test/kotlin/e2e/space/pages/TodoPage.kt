@@ -57,6 +57,9 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
                 By.cssSelector(actionButtonDelete_)
             )
         ).click().perform()
+        visibilityOfAllElementsLocatedBy(
+            By.xpath("//*[contains(@class,'$notification_')]//*[contains(text(),'Undo')]")
+        )
     }
 
     fun undoDeletedTask(): TodoPage = apply {
