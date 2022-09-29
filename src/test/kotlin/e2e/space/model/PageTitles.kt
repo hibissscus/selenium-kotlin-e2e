@@ -5,5 +5,5 @@ enum class PageTitles(val title: String) {
     BLOG("Blog"),
     TEAMS("Teams"),
     ADMINISTRATION("Administration"),
-    TODO("Todo"),
+    TODO("To-Do List"),
 }

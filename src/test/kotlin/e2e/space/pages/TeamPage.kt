@@ -14,8 +14,17 @@ class TeamPage(driver: WebDriver) : NavigationPage(driver) {
     @FindBy(css = menuLogo_)
     private lateinit var menuLogo: WebElement
 
+    override fun href(): String {
+        return "/team"
+    }
+
+    override fun name(): String {
+        return PageTitles.TEAMS.title
+    }
+
     override fun opened(s: String): TeamPage = apply {
-        textToBe(sidebarHeader, PageTitles.TEAMS.title)
+        urlContains(href())
+        textToBe(sidebarHeader, name())
     }
 
 }

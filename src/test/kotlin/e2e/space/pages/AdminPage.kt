@@ -15,8 +15,17 @@ class AdminPage(driver: WebDriver) : NavigationPage(driver) {
     @FindBy(css = menuSubtitle_)
     private lateinit var menuSubtitle: WebElement
 
+    override fun href(): String {
+        return "/manage"
+    }
+
+    override fun name(): String {
+        return PageTitles.ADMINISTRATION.title
+    }
+
     override fun opened(s: String): AdminPage = apply {
-        textToBe(sidebarHeader, PageTitles.ADMINISTRATION.title)
+        urlContains(href())
+        textToBe(sidebarHeader, name())
         textToBe(By.cssSelector(menuSubtitle_), "Organization")
     }
 

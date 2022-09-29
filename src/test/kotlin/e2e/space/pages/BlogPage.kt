@@ -14,8 +14,17 @@ class BlogPage(driver: WebDriver) : NavigationPage(driver) {
     @FindBy(css = newArticle_)
     private lateinit var newArticle: WebElement
 
+    override fun href(): String {
+        return "/blog"
+    }
+
+    override fun name(): String {
+        return PageTitles.BLOG.title
+    }
+
     override fun opened(s: String): BlogPage = apply {
-        textToBe(sidebarHeader, PageTitles.BLOG.title)
+        urlContains(href())
+        textToBe(sidebarHeader, name())
         textToBe(newArticle, "New article")
     }
 

@@ -24,7 +24,7 @@ class HomePage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     fun isUserNamePresent(user: User): HomePage = apply {
-        attributeContains(userLogo, "aria-label", user.uiName)
+        isUserNamePresent(user.uiName)
     }
 
     fun isUserNamePresent(name: String): HomePage = apply {

@@ -20,13 +20,21 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
     protected val localTime: LocalTime = LocalTime.now()
 
     override fun waitMin(): Long {
-        return 3
+        return 1
     }
 
     abstract fun opened(s: String = ""): BasePage
 
     open fun loaded(): BasePage = apply {
         waitForLoaded()
+    }
+
+    open fun href(): String? {
+        return null
+    }
+
+    open fun name(): String? {
+        return null
     }
 
     companion object {

@@ -1,5 +1,6 @@
 package e2e.space.pages
 
+import e2e.space.model.PageTitles
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
@@ -18,12 +19,18 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     companion object Path {
         const val newTask_ = "[placeholder='Add a task'].XTextFieldStyles-textField"
         const val itemCheckbox_ = ".TodoItemComponentStyles-itemCheckbox"
+        const val itemCheckboxChecked_ = ".XCheckboxStyles-checkboxChecked$itemCheckbox_"
+        const val itemCheckboxUnchecked_ = ".XCheckboxStyles-checkboxPlain$itemCheckbox_"
         const val actionButtonDelete_ = ".MessageActionsPopupStyles-actionButtonDelete"
         const val notification_ = "SingleActionNotificationStyles-notification"
     }
 
     @FindBy(css = newTask_)
     private lateinit var newTask: WebElement
+
+    override fun name(): String {
+        return PageTitles.TODO.title
+    }
 
     override fun opened(s: String): TodoPage = apply {
         visible(newTask)
@@ -38,11 +45,30 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
         newTask.sendKeys(Keys.ENTER)
     }
 
-    fun selectTask(taskName: String): TodoPage = apply {
+    private fun selectUnselectTask(taskName: String, checked: Boolean = true) {
         presenceOfNestedElementLocatedBy(
             By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
-            By.cssSelector(itemCheckbox_)
+            By.cssSelector(if (checked) itemCheckboxUnchecked_ else itemCheckboxChecked_)
         ).click()
+        presenceOfNestedElementLocatedBy(
+            By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
+            By.cssSelector(if (checked) itemCheckboxChecked_ else itemCheckboxUnchecked_)
+        )
+    }
+
+    fun selectTask(taskName: String): TodoPage = apply {
+        selectUnselectTask(taskName, true)
+    }
+
+    fun unselectTask(taskName: String): TodoPage = apply {
+        selectUnselectTask(taskName, false)
+    }
+
+    fun deleteAllTasks(): TodoPage = apply {
+        if (isPresent(By.xpath("//*[@role='listitem']"))) {
+            val todos = presenceOfAllElementsLocatedBy(By.xpath("//*[@role='listitem']")).map { it.text }.toList()
+            todos.forEach { deleteTask(it) }
+        }
     }
 
     fun deleteTask(taskName: String): TodoPage = apply {
@@ -50,13 +76,13 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
             presence(
                 By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
             )
-        ).click().perform()
+        ).pause(300).click().perform()
         Actions(driver).moveToElement(
             presenceOfNestedElementLocatedBy(
                 By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
                 By.cssSelector(actionButtonDelete_)
             )
-        ).click().perform()
+        ).pause(300).click().perform()
         visibilityOfAllElementsLocatedBy(
             By.xpath("//*[contains(@class,'$notification_')]//*[contains(text(),'Undo')]")
         )

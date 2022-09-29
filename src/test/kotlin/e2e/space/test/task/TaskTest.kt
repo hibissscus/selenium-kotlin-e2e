@@ -2,11 +2,11 @@ package e2e.space.test.task
 
 import e2e.space.model.User
 import e2e.space.pages.TodoPage
-import e2e.space.test.login.LoginBase
+import e2e.space.test.login.LoginTestBase
 import org.testng.annotations.Test
 
 @Test(groups = ["task"])
-class TaskTest : LoginBase() {
+class TaskTest : LoginTestBase() {
 
     private val task1 = TodoPage.State()
 
@@ -34,7 +34,7 @@ class TaskTest : LoginBase() {
     @Test(dependsOnMethods = ["tab navigation", "add task", "select task"])
     fun `un-select task`() {
         TodoPage(driver)
-            .selectTask(task1.name)
+            .unselectTask(task1.name)
     }
 
     @Test(dependsOnMethods = ["tab navigation", "add task", "select task", "un-select task"])

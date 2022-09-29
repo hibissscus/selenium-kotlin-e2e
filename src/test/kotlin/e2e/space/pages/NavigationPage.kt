@@ -43,6 +43,12 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         attributeContains(loader, "class", "XLoaderStyles-invisibleLoader")
     }
 
+    @FindBy(css = ".NavigationBarStyles-moreToggle")
+    private lateinit var more: WebElement
+
+    @FindBy(css = ".XApplicationSidebarStyles-drawer")
+    private lateinit var rootWithFullSidebar: WebElement
+
     @FindBy(css = ".AppStyles-Navigation-item [aria-label='Chats']")
     private lateinit var chats: WebElement
 
@@ -68,7 +74,15 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     private lateinit var signOut: WebElement
 
     open fun <T : BasePage> goToPage(element: WebElement, page: T): T = page.apply {
-        view(element, this)
+        if (isVisible(element)) view(element, this) else {
+            navigateToPageViaSidebar(page)
+        }
+    }
+
+    private fun <T : BasePage> navigateToPageViaSidebar(page: T) {
+        click(more)
+        visible(rootWithFullSidebar)
+        click(By.xpath("//span[contains(text(),'${page.name()}')]"))
     }
 
     open fun <T : BasePage> goTo(page: T): T = page.apply {
@@ -85,8 +99,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     fun clickOnTab(tabName: String): NavigationPage = apply {
         visible(scrollableTabs)
         val tabElement = visibilityOfNestedElementsLocatedBy(
-            By.cssSelector(scrollableTabs_),
-            By.xpath(".//*[contains(text(),'${tabName}')]")
+            By.cssSelector(scrollableTabs_), By.xpath(".//*[contains(text(),'${tabName}')]")
         ).first()
         click(tabElement)
         attributeContains(tabElement, "class", "XTabsStyles-selectedTab")

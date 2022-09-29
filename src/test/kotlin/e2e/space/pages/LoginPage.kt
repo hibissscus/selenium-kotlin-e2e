@@ -31,6 +31,10 @@ class LoginPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = submit_)
     private lateinit var submit: WebElement
 
+    override fun href(): String {
+        return "/sign-in"
+    }
+
     override fun opened(s: String): LoginPage = apply {
         if (isPresent(By.cssSelector(frame_))) {
             frameToBeAvailableAndSwitchToIt(frame)
