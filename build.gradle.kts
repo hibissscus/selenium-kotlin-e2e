@@ -27,6 +27,7 @@ tasks {
     test {
         description = "run e2e test locally"
         group = "verification"
+        outputs.upToDateWhen { false }
         useTestNG {
             suites("src/test/resources/local.xml")
             useDefaultListeners = true
@@ -44,6 +45,7 @@ tasks {
 tasks.register<Test>("e2e") {
     description = "run entire e2e test suite"
     group = "verification"
+    outputs.upToDateWhen { false }
     useTestNG {
         suites("src/test/resources/e2e.xml")
         useDefaultListeners = false

@@ -29,7 +29,7 @@
 ### Minor:
 
 - [x] doc: brew cask install chromedriver - Error: brew cask is no longer a brew command. Use brew <command> --cask instead.
-- [ ] gradle issue - повторный запуск тестов из command line не запускает тесты
+- [x] gradle issue - повторный запуск тестов из command line не запускает тесты
   ``
   ./gradlew test --tests "e2e.space.test.navigation.NavigationTest
   BUILD SUCCESSFUL in 1s
