@@ -13,9 +13,8 @@ services:
     environment:
       - TZ=Europe/Berlin
     depends_on:
-      - chrome
       - selenium-hub
-    command: "gradle e2e"
+      - chrome
   selenium-hub:
     container_name: selenium-hub
     image: selenium/hub:4.5.0-20220929
