@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version ("1.7.20")
+    id("com.avast.gradle.docker-compose") version ("0.16.9")
 }
 
 group = "ys-e2e"
@@ -63,4 +64,10 @@ tasks.register<Test>("e2e") {
             "testee.it.reportng.slack.channel" to "test"
         )
     }
+}
+
+dockerCompose {
+    useComposeFiles.add("docker-compose.yml")
+    scale.put("chrome", 3)
+    isRequiredBy(tasks.getByName("e2e"))
 }
