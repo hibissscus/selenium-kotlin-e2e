@@ -14,11 +14,11 @@ services:
     environment:
       - TZ=Europe/Berlin
     depends_on:
-      - selenium-hub
       - chrome1
       - chrome2
       - chrome3
-    command: "gradle e2e -De2e.selenium=http://selenium-hub:4444"
+      - selenium-hub
+    command: "gradle e2e"
   selenium-hub:
     container_name: selenium-hub
     image: selenium/hub:4.5.0-20220929
@@ -28,8 +28,6 @@ services:
       - "4442:4442"
     environment:
       - TZ=Europe/Berlin
-      - SE_SESSION_REQUEST_TIMEOUT=300
-      - SE_SESSION_RETRY_INTERVAL=5
   chrome1:
     container_name: chrome1
     image: selenium/node-chrome:4.5.0-20220929
@@ -42,10 +40,7 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=1
       - TZ=Europe/Berlin
-    ports:
-      - "6901:5900"
   chrome2:
     container_name: chrome2
     image: selenium/node-chrome:4.5.0-20220929
@@ -58,10 +53,7 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=1
       - TZ=Europe/Berlin
-    ports:
-      - "6902:5900"
   chrome3:
     container_name: chrome3
     image: selenium/node-chrome:4.5.0-20220929
@@ -74,9 +66,6 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_MAX_SESSIONS=1
       - TZ=Europe/Berlin
-    ports:
-      - "6903:5900"
 volumes:
   downloads:
