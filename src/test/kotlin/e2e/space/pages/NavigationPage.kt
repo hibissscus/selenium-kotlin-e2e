@@ -82,7 +82,8 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
     open fun <T : BasePage> goToPage(element: WebElement, page: T): T = page.apply {
         if (isVisible(element)) view(element, this) else {
-            navigateToPageViaSidebar(page)
+            switchOnQuickAccessPage(page)
+            view(element, this)
         }
     }
 
@@ -105,12 +106,6 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
     fun <T : BasePage> switchOnQuickAccessPage(page: T): NavigationPage = apply {
         switchAllQuickAccessPages(true, page.name())
-    }
-
-    private fun <T : BasePage> navigateToPageViaSidebar(page: T) {
-        click(more)
-        visible(rootWithFullSidebar)
-        click(By.xpath("//span[contains(text(),'${page.name()}')]"))
     }
 
     open fun <T : BasePage> goTo(page: T): T = page.apply {

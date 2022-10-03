@@ -5,17 +5,17 @@
     <parameter name="headless" value="false"/>
     <test parallel="classes" name="login" thread-count="1">
         <packages>
-            <package name="e2e.space.test.login.*"/>
+            <package name="e2e.space.test.login"/>
         </packages>
     </test>
     <test parallel="classes" name="navigation" thread-count="1">
         <packages>
-            <package name="e2e.space.test.navigation.*"/>
+            <package name="e2e.space.test.navigation"/>
         </packages>
     </test>
     <test parallel="classes" name="task" thread-count="1">
         <packages>
-            <package name="e2e.space.test.task.*"/>
+            <package name="e2e.space.test.task"/>
         </packages>
     </test>
 </suite>

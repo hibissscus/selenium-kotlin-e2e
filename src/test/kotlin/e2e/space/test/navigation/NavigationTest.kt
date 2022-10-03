@@ -6,6 +6,7 @@ import e2e.space.pages.BlogPage
 import e2e.space.pages.HomePage
 import e2e.space.pages.ProjectPage
 import e2e.space.pages.TeamPage
+import e2e.space.pages.TodoPage
 import e2e.space.test.login.LoginTestBase
 import org.testng.annotations.Test
 
@@ -18,8 +19,9 @@ class NavigationTest : LoginTestBase() {
             .switchAllQuickAccessPages(false)
             .switchAllQuickAccessPages(true)
             .switchAllQuickAccessPages(false)
-            .switchOnQuickAccessPage(BlogPage(driver))
+            .switchOnQuickAccessPage(TodoPage(driver))
             .switchOnQuickAccessPage(ProjectPage(driver))
+            .switchOnQuickAccessPage(BlogPage(driver))
             .switchOnQuickAccessPage(TeamPage(driver))
             .switchOnQuickAccessPage(AdminPage(driver))
 
@@ -28,8 +30,9 @@ class NavigationTest : LoginTestBase() {
     @Test(dependsOnMethods = ["navigation quick access pages"])
     fun `can switch between pages`() {
         HomePage(driver)
-            .goTo(BlogPage(driver))
+            .goTo(TodoPage(driver))
             .goTo(ProjectPage(driver))
+            .goTo(BlogPage(driver))
             .goTo(TeamPage(driver))
             .goTo(AdminPage(driver))
     }
