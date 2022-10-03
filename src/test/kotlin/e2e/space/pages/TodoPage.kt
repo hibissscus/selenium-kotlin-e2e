@@ -46,10 +46,12 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     private fun selectUnselectTask(taskName: String, checked: Boolean = true) {
-        presenceOfNestedElementLocatedBy(
-            By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
-            By.cssSelector(if (checked) itemCheckboxUnchecked_ else itemCheckboxChecked_)
-        ).click()
+        click(
+            presenceOfNestedElementLocatedBy(
+                By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
+                By.cssSelector(if (checked) itemCheckboxUnchecked_ else itemCheckboxChecked_)
+            )
+        )
         presenceOfNestedElementLocatedBy(
             By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
             By.cssSelector(if (checked) itemCheckboxChecked_ else itemCheckboxUnchecked_)

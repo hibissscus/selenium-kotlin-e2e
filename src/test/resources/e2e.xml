@@ -14,9 +14,9 @@
             <package name="e2e.space.test.navigation"/>
         </packages>
     </test>
-    <test parallel="classes" name="task" thread-count="1">
+    <test parallel="classes" name="todo" thread-count="1">
         <packages>
-            <package name="e2e.space.test.task"/>
+            <package name="e2e.space.test.todo"/>
         </packages>
     </test>
 </suite>
