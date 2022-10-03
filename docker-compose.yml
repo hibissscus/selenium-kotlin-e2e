@@ -21,7 +21,7 @@ services:
     command: "gradle e2e"
   selenium-hub:
     container_name: selenium-hub
-    image: selenium/hub:4.5.0-20220929
+    image: selenium/hub:4.4.0-20220812
     ports:
       - "4444:4444"
       - "4443:4443"
@@ -30,7 +30,7 @@ services:
       - TZ=Europe/Berlin
   chrome1:
     container_name: chrome1
-    image: selenium/node-chrome:4.5.0-20220929
+    image: selenium/node-chrome:4.4.0-20220812
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
@@ -43,7 +43,7 @@ services:
       - TZ=Europe/Berlin
   chrome2:
     container_name: chrome2
-    image: selenium/node-chrome:4.5.0-20220929
+    image: selenium/node-chrome:4.4.0-20220812
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
@@ -56,7 +56,7 @@ services:
       - TZ=Europe/Berlin
   chrome3:
     container_name: chrome3
-    image: selenium/node-chrome:4.5.0-20220929
+    image: selenium/node-chrome:4.4.0-20220812
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
