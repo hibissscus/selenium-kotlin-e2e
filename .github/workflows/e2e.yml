@@ -20,7 +20,7 @@ jobs:
       # Runs a set of commands: using the runners shell
       - name: Run e2e tests via docker-compose
         timeout-minutes: 10
-        run: docker-compose up e2e
+        run: docker-compose up e2e --scale chrome=3
         working-directory: .
 
       - name: Upload e2e test result as artifact on GitHub
