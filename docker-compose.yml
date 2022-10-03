@@ -15,6 +15,7 @@ services:
     depends_on:
       - selenium-hub
       - chrome
+    command: "gradle e2e"
   selenium-hub:
     container_name: selenium-hub
     image: selenium/hub:4.5.0-20220929
