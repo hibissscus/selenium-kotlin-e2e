@@ -33,7 +33,7 @@ tasks {
         reports.junitXml.required.set(false)
         useTestNG {
             suites("src/test/resources/local.xml")
-            useDefaultListeners = true
+            useDefaultListeners = false
             listeners = setOf("testee.it.reportng.HTMLReporter")
             systemProperties = mapOf(
                 "testee.it.reportng.title" to "e2e-space",

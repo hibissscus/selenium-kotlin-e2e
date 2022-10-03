@@ -15,6 +15,13 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         const val sidebarHeader_ = ".AppStyles-Sidebar-sidebarHeader"
         const val pageHeader_ = ".XStyles-pageHeader"
         const val scrollableTabs_ = ".XTabsStyles-scrollableTabs"
+
+        const val navigationItem_ = ".AppStyles-Navigation-item"
+        const val navigationDropdownItem_ = ".XApplicationSidebarStyles-dropdownItem"
+        const val quickAccessListItem_ = ".QuickAccessPanelStyles-listItem"
+        const val toggleNormal_ = ".XSimpleToggleStyles-toggleNormal"
+        const val toggleActive = "XSimpleToggleStyles-toggleActiveNormal"
+        const val toggleInactive = "XSimpleToggleStyles-toggleInactiveNormal"
     }
 
     @FindBy(css = loader_)
@@ -49,22 +56,22 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = ".XApplicationSidebarStyles-drawer")
     private lateinit var rootWithFullSidebar: WebElement
 
-    @FindBy(css = ".AppStyles-Navigation-item [aria-label='Chats']")
+    @FindBy(css = "[aria-label='Chats']$navigationItem_")
     private lateinit var chats: WebElement
 
-    @FindBy(css = "[aria-label='Projects'].AppStyles-Navigation-item")
+    @FindBy(css = "[aria-label='Projects']$navigationItem_")
     private lateinit var projects: WebElement
 
-    @FindBy(css = "[aria-label='Blog'].AppStyles-Navigation-item")
+    @FindBy(css = "[aria-label='Blog']$navigationItem_")
     private lateinit var blog: WebElement
 
-    @FindBy(css = "[aria-label='Teams'].AppStyles-Navigation-item")
+    @FindBy(css = "[aria-label='Teams']$navigationItem_")
     private lateinit var teams: WebElement
 
-    @FindBy(css = "[aria-label='Administration'].AppStyles-Navigation-item")
+    @FindBy(css = "[aria-label='Administration']$navigationItem_")
     private lateinit var administration: WebElement
 
-    @FindBy(css = "[aria-label='To-Do List'].XApplicationSidebarStyles-dropdownItem")
+    @FindBy(css = "[aria-label='To-Do List']$navigationDropdownItem_")
     private lateinit var todoList: WebElement
 
     @FindBy(css = "[title='e2e']")
@@ -77,6 +84,27 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         if (isVisible(element)) view(element, this) else {
             navigateToPageViaSidebar(page)
         }
+    }
+
+    fun switchAllQuickAccessPages(on: Boolean = true, pageName: String? = null): NavigationPage = apply {
+        if (!isVisible(rootWithFullSidebar)) {
+            click(more)
+            visible(rootWithFullSidebar)
+        }
+        presenceOfAllElementsLocatedBy(By.cssSelector(quickAccessListItem_))
+            .filter { pageName == null || pageName == it.text }
+            .forEach {
+                val toggle = visibilityOfNestedElementsLocatedBy(it, (By.cssSelector(toggleNormal_))).first()
+                if (toggle.getAttribute("class").contains(if (on) toggleInactive else toggleActive)) {
+                    click(toggle)
+                    attributeContains(toggle, "class", if (on) toggleActive else toggleInactive)
+                    if (on) presence(By.cssSelector("[aria-label='${it.text}']$navigationItem_,$navigationDropdownItem_"))
+                }
+            }
+    }
+
+    fun <T : BasePage> switchOnQuickAccessPage(page: T): NavigationPage = apply {
+        switchAllQuickAccessPages(true, page.name())
     }
 
     private fun <T : BasePage> navigateToPageViaSidebar(page: T) {
