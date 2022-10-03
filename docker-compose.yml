@@ -21,16 +21,18 @@ services:
     command: "gradle e2e"
   selenium-hub:
     container_name: selenium-hub
-    image: selenium/hub:4.4.0-20220812
+    image: selenium/hub:4.4.0-20220831
     ports:
       - "4444:4444"
       - "4443:4443"
       - "4442:4442"
     environment:
       - TZ=Europe/Berlin
+      - SE_SESSION_REQUEST_TIMEOUT=300
+      - SE_SESSION_RETRY_INTERVAL=5
   chrome1:
     container_name: chrome1
-    image: selenium/node-chrome:4.4.0-20220812
+    image: selenium/node-chrome:4.4.0-20220831
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
@@ -40,10 +42,11 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=1
       - TZ=Europe/Berlin
   chrome2:
     container_name: chrome2
-    image: selenium/node-chrome:4.4.0-20220812
+    image: selenium/node-chrome:4.4.0-20220831
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
@@ -53,10 +56,11 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=1
       - TZ=Europe/Berlin
   chrome3:
     container_name: chrome3
-    image: selenium/node-chrome:4.4.0-20220812
+    image: selenium/node-chrome:4.4.0-20220831
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
@@ -66,6 +70,7 @@ services:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=1
       - TZ=Europe/Berlin
 volumes:
   downloads:
