@@ -30,6 +30,8 @@ services:
       - SE_SESSION_RETRY_INTERVAL=5
   chrome:
     image: selenium/node-chrome
+    deploy:
+      replicas: 3
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
