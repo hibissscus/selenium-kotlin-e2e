@@ -14,7 +14,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
         const val sidebarHeader_ = ".AppStyles-Sidebar-sidebarHeader"
         const val pageHeader_ = ".XStyles-pageHeader"
-        const val scrollableTabs_ = ".XTabsStyles-scrollableTabs"
+        const val tabs_ = ".XTabsStyles-tabs"
 
         const val navigationItem_ = ".AppStyles-Navigation-item"
         const val navigationDropdownItem_ = ".XApplicationSidebarStyles-dropdownItem"
@@ -33,8 +33,8 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = pageHeader_)
     protected lateinit var pageHeader: WebElement
 
-    @FindBy(css = scrollableTabs_)
-    protected lateinit var scrollableTabs: WebElement
+    @FindBy(css = tabs_)
+    protected lateinit var tabs: WebElement
 
     override fun opened(s: String): NavigationPage = apply {
         presence(By.cssSelector(app_))
@@ -119,12 +119,13 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         }
     }
 
-    fun clickOnTab(tabName: String): NavigationPage = apply {
-        visible(scrollableTabs)
+    protected fun selectTabByName(tabName: String): NavigationPage = apply {
+        visible(tabs)
         val tabElement = visibilityOfNestedElementsLocatedBy(
-            By.cssSelector(scrollableTabs_), By.xpath(".//*[contains(text(),'${tabName}')]")
+            By.cssSelector(tabs_), By.xpath(".//*[contains(text(),'${tabName}')]")
         ).first()
         click(tabElement)
+        attributeContains(tabElement, "class", "XTabsStyles-tab")
         attributeContains(tabElement, "class", "XTabsStyles-selectedTab")
     }
 

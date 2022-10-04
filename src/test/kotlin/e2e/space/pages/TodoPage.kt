@@ -37,7 +37,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     fun selectTab(tabName: String): TodoPage = apply {
-        clickOnTab(tabName)
+        selectTabByName(tabName)
     }
 
     fun addTask(taskName: String): TodoPage = apply {

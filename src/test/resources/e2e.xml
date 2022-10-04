@@ -14,6 +14,11 @@
             <package name="e2e.space.test.navigation"/>
         </packages>
     </test>
+    <test parallel="classes" name="team" thread-count="1">
+        <packages>
+            <package name="e2e.space.test.team"/>
+        </packages>
+    </test>
     <test parallel="classes" name="todo" thread-count="1">
         <packages>
             <package name="e2e.space.test.todo"/>
