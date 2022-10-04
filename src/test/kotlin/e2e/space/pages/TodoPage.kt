@@ -46,7 +46,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     private fun selectUnselectTask(taskName: String, checked: Boolean = true) {
-        val checkboxXpath = "//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]//*[contains(@class,'TodoItemComponentStyles-itemCheckbox')"
+        val checkboxXpath = "//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]//*[contains(@class,'$itemCheckbox')"
         click(By.xpath(checkboxXpath + "and contains(@class,${if (checked) itemCheckboxUnchecked else itemCheckboxChecked})]"))
         presence(By.xpath(checkboxXpath + "and contains(@class,${if (checked) itemCheckboxChecked else itemCheckboxUnchecked})]"))
     }
@@ -80,6 +80,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
         visibilityOfAllElementsLocatedBy(
             By.xpath("//*[contains(@class,'$notification_')]//*[contains(text(),'Undo')]")
         )
+        waitForLoaded()
     }
 
     fun undoDeletedTask(): TodoPage = apply {
