@@ -18,9 +18,9 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
 
     companion object Path {
         const val newTask_ = "[placeholder='Add a task'].XTextFieldStyles-textField"
-        const val itemCheckbox_ = ".TodoItemComponentStyles-itemCheckbox"
-        const val itemCheckboxChecked_ = ".XCheckboxStyles-checkboxChecked$itemCheckbox_"
-        const val itemCheckboxUnchecked_ = ".XCheckboxStyles-checkboxPlain$itemCheckbox_"
+        const val itemCheckbox = "TodoItemComponentStyles-itemCheckbox"
+        const val itemCheckboxChecked = "XCheckboxStyles-checkboxChecked"
+        const val itemCheckboxUnchecked = "XCheckboxStyles-checkboxPlain"
         const val actionButtonDelete_ = ".MessageActionsPopupStyles-actionButtonDelete"
         const val notification_ = "SingleActionNotificationStyles-notification"
     }
@@ -46,16 +46,9 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     private fun selectUnselectTask(taskName: String, checked: Boolean = true) {
-        click(
-            visibilityOfNestedElementsLocatedBy(
-                By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
-                By.cssSelector(if (checked) itemCheckboxUnchecked_ else itemCheckboxChecked_)
-            ).first()
-        )
-        visibilityOfNestedElementsLocatedBy(
-            By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
-            By.cssSelector(if (checked) itemCheckboxChecked_ else itemCheckboxUnchecked_)
-        )
+        val checkboxXpath = "//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]//*[contains(@class,'TodoItemComponentStyles-itemCheckbox')"
+        click(By.xpath(checkboxXpath + "and contains(@class,${if (checked) itemCheckboxUnchecked else itemCheckboxChecked})]"))
+        presence(By.xpath(checkboxXpath + "and contains(@class,${if (checked) itemCheckboxChecked else itemCheckboxUnchecked})]"))
     }
 
     fun selectTask(taskName: String): TodoPage = apply {
@@ -81,8 +74,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
         ).pause(300).click().perform()
         Actions(driver).moveToElement(
             presenceOfNestedElementLocatedBy(
-                By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
-                By.cssSelector(actionButtonDelete_)
+                By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"), By.cssSelector(actionButtonDelete_)
             )
         ).pause(300).click().perform()
         visibilityOfAllElementsLocatedBy(
