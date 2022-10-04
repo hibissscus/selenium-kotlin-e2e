@@ -5,7 +5,7 @@ import e2e.space.pages.TeamPage
 import e2e.space.test.login.LoginTestBase
 import org.testng.annotations.Test
 
-@Test(groups = ["navigation"])
+@Test(groups = ["team"])
 class TeamTest : LoginTestBase() {
 
     @Test
