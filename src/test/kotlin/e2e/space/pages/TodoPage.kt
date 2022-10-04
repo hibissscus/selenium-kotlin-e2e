@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
-import org.openqa.selenium.support.ui.ExpectedConditions
 import kotlin.random.Random
 
 class TodoPage(driver: WebDriver) : NavigationPage(driver) {
@@ -48,11 +47,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
 
     private fun selectUnselectTask(taskName: String, checked: Boolean = true) {
         val checkboxXpath = "//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]//*[contains(@class,'$itemCheckbox')"
-        wait().until(
-            ExpectedConditions.refreshed(
-                ExpectedConditions.elementToBeClickable(By.xpath(checkboxXpath + "and contains(@class,${if (checked) itemCheckboxUnchecked else itemCheckboxChecked})]"))
-            )
-        )
+        click(By.xpath(checkboxXpath + "and contains(@class,${if (checked) itemCheckboxUnchecked else itemCheckboxChecked})]"), true)
         presence(By.xpath(checkboxXpath + "and contains(@class,${if (checked) itemCheckboxChecked else itemCheckboxUnchecked})]"))
     }
 
