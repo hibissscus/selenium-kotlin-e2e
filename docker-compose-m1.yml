@@ -1,0 +1,32 @@
+version: "3.9"
+# limitation:
+# - we are able to run SE_NODE_MAX_SESSIONS session not more than cpu core we have (cpu limit)
+# - each node uses approximately 2x250MB of RAM
+# - each node uses approximately 256 MB of SSD disk space
+services:
+  selenium-hub:
+    container_name: selenium-hub
+    image: seleniarm/hub
+    ports:
+      - "4444:4444"
+      - "4443:4443"
+      - "4442:4442"
+    environment:
+      - TZ=Europe/Berlin
+  chrome:
+    image: seleniarm/node-chromium
+    deploy:
+      replicas: 3
+    shm_size: 512m
+    volumes:
+      - downloads:/home/seluser/
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=1
+      - TZ=Europe/Berlin
+volumes:
+  downloads:

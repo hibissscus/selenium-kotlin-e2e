@@ -1,3 +1,5 @@
+import org.gradle.internal.os.OperatingSystem
+
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version ("1.7.20")
@@ -67,7 +69,10 @@ tasks.register<Test>("e2e") {
 }
 
 dockerCompose {
-    useComposeFiles.add("docker-compose.yml")
+    useComposeFiles.add(
+        if (OperatingSystem.current().toString().contains("aarch64")) "docker-compose-m1.yml"
+        else "docker-compose.yml"
+    )
     scale.put("chrome", 3)
     isRequiredBy(tasks.getByName("e2e"))
 }
