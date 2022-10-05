@@ -4,32 +4,17 @@ version: "3.9"
 # - each node uses approximately 2x250MB of RAM
 # - each node uses approximately 256 MB of SSD disk space
 services:
-  e2e:
-    container_name: e2e
-    image: gradle:7.5.1-jdk17
-    working_dir: /code
-    volumes:
-      - ./:/code
-      - downloads:/code/downloads
-    environment:
-      - TZ=Europe/Berlin
-    depends_on:
-      - selenium-hub
-      - chrome
-    command: "gradle e2e"
   selenium-hub:
     container_name: selenium-hub
-    image: selenium/hub:4.5.0-20220929
+    image: selenium/hub:4.5.0-20221004
     ports:
       - "4444:4444"
       - "4443:4443"
       - "4442:4442"
     environment:
       - TZ=Europe/Berlin
-      - SE_SESSION_REQUEST_TIMEOUT=300
-      - SE_SESSION_RETRY_INTERVAL=5
   chrome:
-    image: selenium/node-chrome
+    image: selenium/node-chrome:4.5.0-20221004
     deploy:
       replicas: 3
     shm_size: 512m
