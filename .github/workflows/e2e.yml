@@ -21,7 +21,7 @@ jobs:
       - name: Runs gradle e2e tests
         timeout-minutes: 10
         continue-on-error: true
-        run: ./gradlew e2e
+        run: ./gradlew docker
 
       # Upload e2e test result as artifact on GitHub
       - name: Upload e2e test result as artifact on GitHub
