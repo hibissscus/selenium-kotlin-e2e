@@ -73,6 +73,5 @@ dockerCompose {
         if (OperatingSystem.current().toString().contains("aarch64")) "docker-compose-m1.yml"
         else "docker-compose.yml"
     )
-    scale.put("chrome", 3)
     isRequiredBy(tasks.getByName("e2e"))
 }
