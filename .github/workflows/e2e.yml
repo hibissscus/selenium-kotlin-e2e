@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v3
 
       # Runs gradle e2e
-      - name: gradle e2e
+      - name: Runs gradle e2e
         timeout-minutes: 10
         run: ./gradlew e2e
 
