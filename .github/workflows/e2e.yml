@@ -17,13 +17,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Runs gradle e2e
-      - name: Runs gradle e2e
+      # Runs gradle e2e tests
+      - name: Runs gradle e2e tests
         timeout-minutes: 10
+        continue-on-error: true
         run: ./gradlew e2e
 
       # Upload e2e test result as artifact on GitHub
       - name: Upload e2e test result as artifact on GitHub
+        if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
           name: e2e_reports

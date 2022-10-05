@@ -28,7 +28,7 @@ dependencies {
 
 tasks {
     test {
-        description = "run e2e test locally"
+        description = "run entire e2e test suite locally"
         group = "verification"
         outputs.upToDateWhen { false }
         testLogging.showStandardStreams = true
@@ -40,7 +40,7 @@ tasks {
             listeners = setOf("testee.it.reportng.HTMLReporter")
             systemProperties = mapOf(
                 "testee.it.reportng.title" to "e2e-space",
-                "testee.it.reportng.slack" to "true",
+                "testee.it.reportng.slack" to "false",
                 "testee.it.reportng.slack.token" to "xxxx-xxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx",
                 "testee.it.reportng.slack.channel" to "test"
             )
@@ -48,8 +48,8 @@ tasks {
     }
 }
 
-tasks.register<Test>("e2e") {
-    description = "run entire e2e test suite"
+tasks.register<Test>("docker") {
+    description = "run entire e2e test suite in docker"
     group = "verification"
     outputs.upToDateWhen { false }
     testLogging.showStandardStreams = true
@@ -58,10 +58,10 @@ tasks.register<Test>("e2e") {
     useTestNG {
         suites("src/test/resources/e2e.xml")
         useDefaultListeners = false
-        listeners = setOf("testee.it.reportng.HTMLReporterRuntime", "testee.it.reportng.HTMLReporter")
+        listeners = setOf("testee.it.reportng.HTMLReporter")
         systemProperties = mapOf(
             "testee.it.reportng.title" to "e2e-space",
-            "testee.it.reportng.slack" to "true",
+            "testee.it.reportng.slack" to "false",
             "testee.it.reportng.slack.token" to "xxxx-xxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx",
             "testee.it.reportng.slack.channel" to "test"
         )
@@ -73,5 +73,5 @@ dockerCompose {
         if (OperatingSystem.current().toString().contains("aarch64")) "docker-compose-m1.yml"
         else "docker-compose.yml"
     )
-    isRequiredBy(tasks.getByName("e2e"))
+    isRequiredBy(tasks.getByName("docker"))
 }
