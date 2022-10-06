@@ -70,7 +70,9 @@ tasks.register<Test>("docker") {
 
 dockerCompose {
     useComposeFiles.add(
-        if (OperatingSystem.current().toString().contains("aarch64")) "docker-compose-m1.yml"
+        if (OperatingSystem.current() != null &&
+            OperatingSystem.current().toString().contains("aarch64")
+        ) "docker-compose-arm.yml"
         else "docker-compose.yml"
     )
     isRequiredBy(tasks.getByName("docker"))
