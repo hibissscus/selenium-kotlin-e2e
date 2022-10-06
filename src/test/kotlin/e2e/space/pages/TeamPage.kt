@@ -1,5 +1,6 @@
 package e2e.space.pages
 
+import e2e.space.model.Availability
 import e2e.space.model.PageTitles
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
@@ -44,6 +45,10 @@ class TeamPage(driver: WebDriver) : NavigationPage(driver) {
         visibilityOfNestedElementsLocatedBy(By.cssSelector(teamDirectory_), By.cssSelector(memberFilter_))
         sendText(memberFilter, memberName)
         textToBe(By.cssSelector(memberProfileCard_), memberName)
+    }
+
+    fun changeAvailability(): TeamPage = apply {
+        super.changeAvailability(true, Availability.HOURS_1)
     }
 
 }

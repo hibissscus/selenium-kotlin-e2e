@@ -1,5 +1,6 @@
 package e2e.space.pages
 
+import e2e.space.model.Availability
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -15,6 +16,9 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         const val sidebarHeader_ = ".AppStyles-Sidebar-sidebarHeader"
         const val pageHeader_ = ".XStyles-pageHeader"
         const val tabs_ = ".XTabsStyles-tabs"
+        const val availability_ = "[data-spotlight-hint-id-cbbcehiace-availability-status*= 'availability-status']"
+        const val bell_ = ".icon-bell-small"
+        const val bellCrossed_ = ".icon-bell-crossed-small"
 
         const val navigationItem_ = ".AppStyles-Navigation-item"
         const val navigationDropdownItem_ = ".XApplicationSidebarStyles-dropdownItem"
@@ -35,6 +39,9 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
     @FindBy(css = tabs_)
     protected lateinit var tabs: WebElement
+
+    @FindBy(css = availability_)
+    protected lateinit var availability: WebElement
 
     override fun opened(s: String): NavigationPage = apply {
         presence(By.cssSelector(app_))
@@ -92,16 +99,14 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
             click(more)
             visible(rootWithFullSidebar)
         }
-        presenceOfAllElementsLocatedBy(By.cssSelector(quickAccessListItem_))
-            .filter { pageName == null || pageName == it.text }
-            .forEach {
-                val toggle = visibilityOfNestedElementsLocatedBy(it, (By.cssSelector(toggleNormal_))).first()
-                if (toggle.getAttribute("class").contains(if (on) toggleInactive else toggleActive)) {
-                    click(toggle)
-                    attributeContains(toggle, "class", if (on) toggleActive else toggleInactive)
-                    if (on) presence(By.cssSelector("[aria-label='${it.text}']$navigationItem_,$navigationDropdownItem_"))
-                }
+        presenceOfAllElementsLocatedBy(By.cssSelector(quickAccessListItem_)).filter { pageName == null || pageName == it.text }.forEach {
+            val toggle = visibilityOfNestedElementsLocatedBy(it, (By.cssSelector(toggleNormal_))).first()
+            if (toggle.getAttribute("class").contains(if (on) toggleInactive else toggleActive)) {
+                click(toggle)
+                attributeContains(toggle, "class", if (on) toggleActive else toggleInactive)
+                if (on) presence(By.cssSelector("[aria-label='${it.text}']$navigationItem_,$navigationDropdownItem_"))
             }
+        }
     }
 
     fun <T : BasePage> switchOnQuickAccessPage(page: T): NavigationPage = apply {
@@ -127,6 +132,10 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         click(tabElement)
         attributeContains(tabElement, "class", "XTabsStyles-tab")
         attributeContains(tabElement, "class", "XTabsStyles-selectedTab")
+    }
+
+    protected fun changeAvailability(on: Boolean, availabilityTime: Availability): NavigationPage = apply {
+        click(availability)
     }
 
     fun logout(): LoginPage {
