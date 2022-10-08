@@ -12,7 +12,7 @@ class TodoTest : LoginTestBase() {
 
     @Test(description = "tab navigation: open todo page on today's tab")
     fun `tab navigation`() {
-        login(User.KING)
+        login(User.ROOK)
             .goTo(TodoPage(driver))
             .selectTab("History")
             .selectTab("Later")

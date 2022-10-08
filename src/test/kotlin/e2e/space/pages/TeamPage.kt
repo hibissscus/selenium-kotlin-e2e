@@ -48,7 +48,7 @@ class TeamPage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     fun changeAvailability(): TeamPage = apply {
-        super.changeAvailability(true, Availability.HOURS_1)
+        changeAvailability(true, Availability.HOURS_1)
     }
 
 }

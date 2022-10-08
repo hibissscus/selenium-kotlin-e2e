@@ -17,6 +17,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         const val pageHeader_ = ".XStyles-pageHeader"
         const val tabs_ = ".XTabsStyles-tabs"
         const val availability_ = "[data-spotlight-hint-id-cbbcehiace-availability-status*= 'availability-status']"
+        const val moon_ = ".icon-moon-small"
         const val bell_ = ".icon-bell-small"
         const val bellCrossed_ = ".icon-bell-crossed-small"
 

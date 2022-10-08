@@ -39,7 +39,7 @@ tasks {
             useDefaultListeners = false
             listeners = setOf("testee.it.reportng.HTMLReporter")
             systemProperties = mapOf(
-                "testee.it.reportng.title" to "e2e-space",
+                "testee.it.reportng.title" to "e2e-space-local",
                 "testee.it.reportng.slack" to "false",
                 "testee.it.reportng.slack.token" to "xxxx-xxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx",
                 "testee.it.reportng.slack.channel" to "test"
@@ -56,11 +56,11 @@ tasks.register<Test>("docker") {
     reports.html.required.set(false)
     reports.junitXml.required.set(false)
     useTestNG {
-        suites("src/test/resources/e2e.xml")
+        suites("src/test/resources/docker.xml")
         useDefaultListeners = false
         listeners = setOf("testee.it.reportng.HTMLReporter")
         systemProperties = mapOf(
-            "testee.it.reportng.title" to "e2e-space",
+            "testee.it.reportng.title" to "e2e-space-docker",
             "testee.it.reportng.slack" to "false",
             "testee.it.reportng.slack.token" to "xxxx-xxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx",
             "testee.it.reportng.slack.channel" to "test"
