@@ -21,11 +21,12 @@ job("Build and run e2e tests using docker") {
     }
 
     host {
-//        shellScript {
-//            content = """
-//                ./gradlew docker
-//            """
-//        }
+        shellScript {
+            content = """
+                ./gradlew docker
+            """
+        }
+
         shellScript {
             content = """
                 echo General:
@@ -45,7 +46,6 @@ job("Build and run e2e tests using docker") {
                 echo SPACE_WORKER_TOKEN=${'$'}SPACE_WORKER_TOKEN
                 echo SPACE_WORKER_DATADIR=${'$'}SPACE_WORKER_DATADIR
                 echo SPACE_WORKER_HOSTNAME=${'$'}SPACE_WORKER_HOSTNAME
-                echo JB_SPACE_PACKAGES_FILE_TOKEN=${'$'}JB_SPACE_PACKAGES_FILE_TOKEN
             """
         }
 
