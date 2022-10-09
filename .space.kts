@@ -4,9 +4,9 @@
  */
 
 job("Build and run e2e tests in docker") {
-    container(image = "gradle") {
+    container(image = "ubuntu:latest") {
         shellScript {
-            content = "gradle docker"
+            content = "./gradlew docker"
         }
     }
 }
