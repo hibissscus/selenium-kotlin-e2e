@@ -43,11 +43,9 @@ class LoginPage(driver: WebDriver) : BasePage(driver) {
     }
 
     private fun login(usernameText: String, passwordText: String): LoginPage = apply {
-        if (driver().findElements(By.cssSelector(username_)).size > 0) {
-            sendText(username, usernameText)
-            sendText(password, passwordText)
-            click(submit)
-        }
+        sendText(username, usernameText)
+        sendText(password, passwordText)
+        click(submit)
     }
 
     fun login(user: User): LoginPage = apply {
