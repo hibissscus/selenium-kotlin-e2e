@@ -12,7 +12,7 @@ job("Hello from cloud worker") {
     host("Run echo") {
         shellScript {
             content = """
-                docker-compose --version
+                ./gradlew docker
             """
         }
     }
