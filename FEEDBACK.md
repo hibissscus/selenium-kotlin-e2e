@@ -20,6 +20,7 @@
 ### Мысли и замечания:
 
 - [ ] Почему бы не сделать не на GH actions, а на Space automation? - мы могли бы сделать там ревью.
+    - Добавлен файл `.space.kts` для `Space automation`
 - [x] docker-compose - зачем 3 ноды хрома? Можно скалировать сервис.
     - Замечание исправлено, в `docker-compose` добавлен параметр `deploy: replicas: 3`, скалирующий ноду хрому до трех экземпляров для параллельного
       выполнения тестов
@@ -70,10 +71,12 @@
   3 actionable tasks: 3 up-to-date
   ``
     - Данный недостаток был исправлен в `build.gradle.kts` добавлен параметр `outputs.upToDateWhen { false }`, исключающий переиспользование
-      результата
-      предыдущего запуска теста ![upToDateWhen.png](feedback/upToDateWhen.png)
+      результата предыдущего запуска теста ![upToDateWhen.png](feedback/upToDateWhen.png)
 
 - [x] Хотелось бы конфигурацию для запуска тестов с браузерами в докере. И репорт, чтобы можно было посмотреть.
     - В `build.gradle.kts` добавлен плагин `docker-compose` запускающий в докер-контейнере selenium hub и selenium ноды хрома для параллельного
       запуска e2e тестов. В результате запуска тест кейсов формируется отчет доступный по ссылке в логе.
       ``./gradlew docker`` ![docker-report-link.png](feedback/docker-report-link.png)
+    - Также результат запуска тестов в докере на GitHub Actions можно посмотреть на странице
+      Actions: https://github.com/hibissscus/selenium-kotlin-e2e/actions
+      в любом из последних запусков и загрузить в виде zip архива ![img.png](feedback/github-actions.png)
