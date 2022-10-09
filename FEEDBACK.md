@@ -33,7 +33,7 @@
     - Переработан `UserTest` - удален копипаст и добавлен обход пользователей по списку
 - [x] e2e.space.pages.space.LoginPage#login(java.lang.String, java.lang.String) - а что если элемент не найдется из за баги? Оно не упадет.
     - Метод был переработан, удалена ненужная проверка на элемент. В данном методе мы полагаемся на `FluentWait`, если элемент не будет найден, то
-      выпадет WebDriver TimeoutException, это является сигналом того, что тест завершился неудачей.
+      выпадет WebDriver TimeoutException, это является сигналом того, что тест завершился неудачей. ![login-fluent-wait.png](feedback/login-fluent-wait.png)
 - [x] ^^^ оба теста делают приблизительно одно и тоже. isUserNamePresent логичнее чекать в loginTest
     - Проверка была добавлена внутри метода прохождения регистрации ![login.png](feedback/login.png)
 
