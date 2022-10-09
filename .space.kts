@@ -3,10 +3,17 @@
  * see https://www.jetbrains.com/help/space/automation.html
  */
 
-job("Build and run e2e tests in docker") {
-    container(image = "gradle") {
+job("Hello from cloud worker") {
+    // the job will run in a default regular ubuntu lts instance
+    requirements {
+        workerPool = WorkerPools.SPACE_CLOUD
+    }
+
+    host("Run echo") {
         shellScript {
-            content = "./gradlew test --tests \"reportng.DependantTests\""
+            content = """
+                docker-compose --version
+            """
         }
     }
 }
