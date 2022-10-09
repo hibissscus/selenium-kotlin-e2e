@@ -23,7 +23,7 @@
     - Добавлен файл `.space.kts` для `Space automation`
 - [x] docker-compose - зачем 3 ноды хрома? Можно скалировать сервис.
     - Замечание исправлено, в `docker-compose` добавлен параметр `deploy: replicas: 3`, скалирующий ноду хрому до трех экземпляров для параллельного
-      выполнения тестов
+      выполнения тестов ![chrome-replicas.png](feedback/chrome-replicas.png)
 - [x] e2e.space.pages.google.GooglePage copy/paste
     - Ненужный тест и соответствующая ей страница были удалены
 - [ ] testee.it.e2e.core.pages.WaitForLoaded#waitForLoaded - ненадежная проверка загрузки, лучше асинхронно.
@@ -49,9 +49,9 @@
     - Добавлена ссылка в лог на отчет с результатами запуска теста ![report.png](feedback/report.png)
 
 - [x] 3 ноды браузеров - тесты параллелятся?
-    - Да, тесты параллелятся с помощью `testNG` параметра `thread-count` внутри `docker.xml`. Тесты запускаются в трех потоках, для этого используется
+    - Да, тесты параллелятся с помощью `testNG` используется параметр `thread-count` внутри `docker.xml`. Тесты запускаются в трех потоках, для этого используется
       скалирование нод хрома
-      в `docker-compose`  ![testng-thread-count.png](feedback/testng-thread-count.png) ![img_1.png](feedback/chrome-replicas.png)
+      в `docker-compose`  ![testng-thread-count.png](feedback/testng-thread-count.png) ![chrome-replicas.png](feedback/chrome-replicas.png)
 - [x] e2e.space.test.todo.TodoTest - зачем ожидания в конце каждого теста?
     - Данные временные ожидания были добавлены для демонстрации работы тестов на интервью, в текущей версии эти ожидания были удалены
 
