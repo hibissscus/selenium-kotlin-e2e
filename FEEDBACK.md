@@ -9,11 +9,11 @@
   недостаточно
   - Переработан TodoTest - добавлена активация панели быстрого доступа перед переходом на страницу задач
 - [x] Логин тест в каждом классе - не очень хорошее решение
-  - login вынесен в отдельный метод класса `e2e.space.test.login.LoginTestBase` вызываемый в самом начале тестов
+  - login вынесен в отдельный метод класса `e2e.space.test.login.LoginTestBase` вызываемый в самом начале тестов ![login.png](feedback/login.png)
 - [x] Необходимость запускать тесты в хардкорной последовательности
-  - В тесты добавлена testNG зависимость dependsOnMethods позволяющая определить зависимость между тестами класса
+  - В тесты добавлена testNG зависимость dependsOnMethods позволяющая определить зависимость между тестами класса ![dependsOnMethods.png](feedback/dependsOnMethods.png)
 - [x] Невозможно запустить один тест из IDE (п3) (все кроме логина)
-  - Теперь каждый тест внутри класса можно запустить из IDEA отдельно, для этого в IDEA необходимо выбрать "use IntelliJ IDEA" ![gradle.png](feedback/gradle.png)
+  - Теперь каждый тест внутри класса можно запустить из IDEA отдельно (п4), для этого в IDEA необходимо выбрать "use IntelliJ IDEA" ![gradle.png](feedback/gradle.png)
 
 ### Мысли и замечания:
 
@@ -40,7 +40,9 @@
   - README.md переработан, замечания были исправлены 
 - [x] gradle issue - повторный запуск тестов из command line не запускает тесты
   ``
-  ./gradlew test --tests "e2e.space.test.navigation.NavigationTest
+  ./gradlew test --tests "e2e.space.test.navigation.NavigationTest"
+  ``
+  ``
   BUILD SUCCESSFUL in 1s
   3 actionable tasks: 3 up-to-date
   ``
@@ -49,6 +51,7 @@
   3 actionable tasks: 3 up-to-date
   ``
   - Данный недостаток был исправлен в build.gradle.kts добавлен параметр outputs.upToDateWhen { false } исключающий переиспользование результата предыдущего запуска тестов 
+![upToDateWhen.png](feedback/upToDateWhen.png)
 - [x] Хотелось бы конфигурацию для запуска тестов с браузерами в докере. И репорт, чтобы можно было посмотреть.
   - В build.gradle.kts добавлен плагин docker-compose запускающий в докер контейнере selenium hub и selenium ноды хрома для параллельного запуска e2e тестов. В результате запуска тест кейсов формируется отчет доступный по ссылке в логе.
-``./gradlew docker`` ![report-link.png](feedback/report-link.png)
+``./gradlew docker`` ![docker-report-link.png](feedback/docker-report-link.png)

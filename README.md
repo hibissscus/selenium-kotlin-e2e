@@ -19,15 +19,31 @@ HTTPS clone URL: https://github.com/hibissscus/selenium-kotlin-e2e.git
 
 ## How to run E2E tests
 
-1. `gradle` is used for building this `E2E` project
+1. `gradle` is used for building this `selenium-kotlin-e2e` project
 2. To run `E2E` tests locally we need to install `chromedriver` or `geckodriver`
     - `brew install chromedriver` (or `brew upgrade chromedriver`)
     - `brew install geckodriver` (or `brew upgrade geckodriver`)
 3. Go to `selenium-kotlin-e2e/src/test/kotlin/e2e/test/space` and run any of the test via IDEA with `test` profile (
    ex.: [TodoTest](https://github.com/hibissscus/selenium-kotlin-e2e/blob/master/src/test/kotlin/e2e/test/space/task/TodoTest.kt))
+   or via gradle:
+   ``
+   ./gradlew test --tests "e2e.space.test.navigation.NavigationTest"
+   ``
+   ``
+   ./gradlew test --tests "e2e.space.test.login.UserTest"
+   ``
+   ``
+   ./gradlew test --tests "e2e.space.test.team.TeamTest"
+   ``
+   the whole e2e test suite can be started via gradle locally:
+   ``
+   ./gradlew test
+   ``
 4. For `Selenium` dockerization use [docker-compose.yml](https://github.com/hibissscus/selenium-kotlin-e2e/blob/master/docker-compose.yml)
-    - `docker-compose up e2e`
-    - `docker-compose down`
+   e2e test suite can be started via gradle using docker:
+   ``
+   ./gradlew e2e
+   ``
 
 ### Authors
 
