@@ -6,20 +6,16 @@
     - Добавлен `TeamTest` - тест для проверки членов команды, а также временной доступности участников команды
     - Переработан `NavigationTest` - добавлена проверка панелей быстрого доступа
 
-
 - [x] В тех тестах, что есть, не хватает ассертов. E.g: e2e.space.test.todo.TodoTest#02 todo list navigation - кажется, что проверки на стиль табика
   недостаточно
     - Переработан TodoTest - добавлена активация панели быстрого доступа перед переходом на страницу задач
 
-
 - [x] Логин тест в каждом классе - не очень хорошее решение
     - login вынесен в отдельный метод класса `e2e.space.test.login.LoginTestBase` вызываемый в самом начале тестов ![login.png](feedback/login.png)
-
 
 - [x] Необходимость запускать тесты в хардкорной последовательности
     - В тесты добавлена testNG зависимость dependsOnMethods позволяющая определить зависимость между тестами
       класса ![dependsOnMethods.png](feedback/dependsOnMethods.png)
-
 
 - [x] Невозможно запустить один тест из IDE (п3) (все кроме логина)
     - Теперь каждый тест внутри класса можно запустить из IDEA отдельно (п4), для этого в IDEA необходимо выбрать "use IntelliJ
@@ -52,7 +48,6 @@
 - [x] doc: brew cask install chromedriver - Error: brew cask is no longer a brew command. Use brew <command> --cask instead.
     - `README.md` переработан, замечания были исправлены
 
-
 - [x] gradle issue - повторный запуск тестов из command line не запускает тесты
   ``./gradlew test --tests "e2e.space.test.navigation.NavigationTest"``
   ``
@@ -65,7 +60,6 @@
   ``
     - Данный недостаток был исправлен в `build.gradle.kts` добавлен параметр `outputs.upToDateWhen { false }` исключающий переиспользование результата
       предыдущего запуска теста ![upToDateWhen.png](feedback/upToDateWhen.png)
-
 
 - [x] Хотелось бы конфигурацию для запуска тестов с браузерами в докере. И репорт, чтобы можно было посмотреть.
     - В `build.gradle.kts` добавлен плагин `docker-compose` запускающий в докер-контейнере selenium hub и selenium ноды хрома для параллельного
