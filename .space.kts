@@ -26,9 +26,6 @@ job("Build and run e2e tests using docker") {
                 ./gradlew docker
             """
         }
-    }
-
-    host {
         shellScript {
             // SOURCE_PATH is path to the build artifact
             // TARGET_PATH is the destination path in the file repository
