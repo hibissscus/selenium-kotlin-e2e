@@ -29,22 +29,23 @@ job("Build and run e2e tests using docker") {
         shellScript {
             content = """
                 echo General:
-                echo JB_SPACE_API_URL ${'$'}JB_SPACE_API_URL
+                echo JB_SPACE_API_URL=${'$'}JB_SPACE_API_URL
                 echo Authentication:
-                echo JB_SPACE_CLIENT_TOKEN ${'$'}JB_SPACE_CLIENT_TOKEN
-                echo JB_SPACE_CLIENT_ID ${'$'}JB_SPACE_CLIENT_ID
+                echo JB_SPACE_CLIENT_TOKEN=${'$'}JB_SPACE_CLIENT_TOKEN
+                echo JB_SPACE_CLIENT_ID=${'$'}JB_SPACE_CLIENT_ID
                 echo Project settings:
-                echo JB_SPACE_STEP_DATA_PATH ${'$'}JB_SPACE_STEP_DATA_PATH
-                echo JB_SPACE_WORK_DIR_PATH ${'$'}JB_SPACE_WORK_DIR_PATH
+                echo JB_SPACE_STEP_DATA_PATH=${'$'}JB_SPACE_STEP_DATA_PATH
+                echo JB_SPACE_WORK_DIR_PATH=${'$'}JB_SPACE_WORK_DIR_PATH
                 echo Automation:
-                echo JB_SPACE_EXECUTION_NUMBER ${'$'}JB_SPACE_EXECUTION_NUMBER
-                echo JB_SPACE_EXECUTION_ID ${'$'}JB_SPACE_EXECUTION_ID
-                echo JB_SPACE_EXECUTION_URL ${'$'}JB_SPACE_EXECUTION_URL
+                echo JB_SPACE_EXECUTION_NUMBER=${'$'}JB_SPACE_EXECUTION_NUMBER
+                echo JB_SPACE_EXECUTION_ID=${'$'}JB_SPACE_EXECUTION_ID
+                echo JB_SPACE_EXECUTION_URL=${'$'}JB_SPACE_EXECUTION_URL
                 echo Self-hosted and cloud workers:
-                echo SPACE_WORKER_SERVERURL ${'$'}SPACE_WORKER_SERVERURL
-                echo SPACE_WORKER_TOKEN ${'$'}SPACE_WORKER_TOKEN
-                echo SPACE_WORKER_DATADIR ${'$'}SPACE_WORKER_DATADIR
-                echo SPACE_WORKER_HOSTNAME ${'$'}SPACE_WORKER_HOSTNAME
+                echo SPACE_WORKER_SERVERURL=${'$'}SPACE_WORKER_SERVERURL
+                echo SPACE_WORKER_TOKEN=${'$'}SPACE_WORKER_TOKEN
+                echo SPACE_WORKER_DATADIR=${'$'}SPACE_WORKER_DATADIR
+                echo SPACE_WORKER_HOSTNAME=${'$'}SPACE_WORKER_HOSTNAME
+                echo JB_SPACE_PACKAGES_FILE_TOKEN=${'$'}JB_SPACE_PACKAGES_FILE_TOKEN
             """
         }
 
