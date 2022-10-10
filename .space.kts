@@ -29,7 +29,8 @@ job("Build and run e2e tests using docker") {
                 echo SOURCE_PATH=${'$'}JB_SPACE_WORK_DIR_PATH/build/reports/tests/docker/e2e/e2e.png
                 echo TARGET_PATH=/${'$'}JB_SPACE_EXECUTION_NUMBER/
                 echo REPO_URL=https://files.pkg.jetbrains.space/e2e/p/e2e/e2e-test-reports
-                echo curl="Authorization: Bearer ${'$'}JB_SPACE_CLIENT_TOKEN" -F file=@"${'$'}SOURCE_PATH" ${'$'}REPO_URL/${'$'}TARGET_PATH
+                echo file="${'$'}SOURCE_PATH" ${'$'}REPO_URL/${'$'}TARGET_PATH
+                echo target=${'$'}REPO_URL/${'$'}TARGET_PATH
                 curl -i -H "Authorization: Bearer ${'$'}JB_SPACE_CLIENT_TOKEN" -F file=@"${'$'}SOURCE_PATH" ${'$'}REPO_URL/${'$'}TARGET_PATH
             """
         }
