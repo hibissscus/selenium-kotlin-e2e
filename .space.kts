@@ -12,7 +12,7 @@ job("Build and run e2e tests using docker") {
         testFailed { enabled = false }
         nonZeroExitCode { enabled = false }
         timeOut {
-            runningTimeOutInMinutes = 10
+            runningTimeOutInMinutes = 15
         }
     }
 
