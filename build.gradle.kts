@@ -56,12 +56,12 @@ tasks.register<Test>("docker") {
     testNG("run entire space e2e test suite in docker", "src/test/resources/docker.xml", "e2e-space-docker")
 }
 
-dockerCompose {
-    useComposeFiles.add(
-        if (OperatingSystem.current() != null
-            && OperatingSystem.current().toString().contains("aarch64")
-        ) "docker-compose-arm.yml"
-        else "docker-compose.yml"
-    )
-    isRequiredBy(tasks.getByName("docker"))
-}
+//dockerCompose {
+//    useComposeFiles.add(
+//        if (OperatingSystem.current() != null
+//            && OperatingSystem.current().toString().contains("aarch64")
+//        ) "docker-compose-arm.yml"
+//        else "docker-compose.yml"
+//    )
+//    isRequiredBy(tasks.getByName("docker"))
+//}
