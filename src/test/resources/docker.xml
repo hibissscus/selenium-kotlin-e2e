@@ -4,24 +4,24 @@
     <parameter name="url" value="https://e2e.jetbrains.space"/>
     <parameter name="browser" value="CHROME"/>
     <parameter name="headless" value="true"/>
-<!--    <test parallel="classes" name="login" thread-count="1">-->
-<!--        <packages>-->
-<!--            <package name="e2e.space.test.login"/>-->
-<!--        </packages>-->
-<!--    </test>-->
-<!--    <test parallel="classes" name="navigation" thread-count="1">-->
-<!--        <packages>-->
-<!--            <package name="e2e.space.test.navigation"/>-->
-<!--        </packages>-->
-<!--    </test>-->
+    <test parallel="classes" name="login" thread-count="1">
+        <packages>
+            <package name="e2e.space.test.login"/>
+        </packages>
+    </test>
+    <test parallel="classes" name="navigation" thread-count="1">
+        <packages>
+            <package name="e2e.space.test.navigation"/>
+        </packages>
+    </test>
     <test parallel="classes" name="team" thread-count="1">
         <packages>
             <package name="e2e.space.test.team"/>
         </packages>
     </test>
-<!--    <test parallel="classes" name="todo" thread-count="1">-->
-<!--        <packages>-->
-<!--            <package name="e2e.space.test.todo"/>-->
-<!--        </packages>-->
-<!--    </test>-->
+    <test parallel="classes" name="todo" thread-count="1">
+        <packages>
+            <package name="e2e.space.test.todo"/>
+        </packages>
+    </test>
 </suite>
