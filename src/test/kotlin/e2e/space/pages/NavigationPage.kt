@@ -55,6 +55,8 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
      */
     override fun loaded(): NavigationPage = apply {
         super.loaded()
+        isVisible(loader)
+        isInvisible(loader)
         attributeContains(loader, "class", "XLoaderStyles-invisibleLoader")
     }
 
@@ -89,14 +91,14 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     private lateinit var signOut: WebElement
 
     open fun <T : BasePage> goToPage(element: WebElement, page: T): T = page.apply {
-        if (isVisible(element)) view(element, this) else {
+        if (isClickable(element)) view(element, this) else {
             switchOnQuickAccessPage(page)
             view(element, this)
         }
     }
 
     fun switchAllQuickAccessPages(on: Boolean = true, pageName: String? = null): NavigationPage = apply {
-        if (!isVisible(rootWithFullSidebar)) {
+        if (!isClickable(rootWithFullSidebar)) {
             click(more)
             visible(rootWithFullSidebar)
         }
