@@ -29,6 +29,10 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
         waitForLoaded()
     }
 
+    open fun navigate(url: String): BasePage = apply {
+        driver().navigate().to(url)
+    }
+
     open fun href(): String? {
         return null
     }
@@ -38,14 +42,6 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
     }
 
     companion object {
-        /**
-         * General wait for page source to be loaded.
-         */
-        fun <P : BasePage> P.loaded(): P {
-            waitForLoaded()
-            return this
-        }
-
         /**
          * Waiting for amount of seconds on the [WaitForSeconds]
          *
@@ -91,9 +87,4 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
             return page
         }
     }
-
-    fun navigate(url: String) {
-        driver().navigate().to(url)
-    }
-
 }
