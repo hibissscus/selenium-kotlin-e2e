@@ -28,7 +28,8 @@
       выполнения тестов ![chrome-replicas.png](feedback/chrome-replicas.png)
 - [x] e2e.space.pages.google.GooglePage copy/paste
     - Ненужный тест и соответствующая ей страница были удалены
-- [ ] testee.it.e2e.core.pages.WaitForLoaded#waitForLoaded - ненадежная проверка загрузки, лучше асинхронно.
+- [x] testee.it.e2e.core.pages.WaitForLoaded#waitForLoaded - ненадежная проверка загрузки, лучше асинхронно.
+    - Метод был переработан, теперь мы полагаемся на `FluentWait`, ожидая полной загрузки страницы.
 - [x] e2e.space.pages.BasePage#isOpened etc. - странно что is*, не boolean.
     - Замечание было исправлено в репозитории `testee`, адаптированы соответствующие названия методов
 
