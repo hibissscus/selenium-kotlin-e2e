@@ -19,7 +19,7 @@ jobs:
 
       # Runs gradle e2e tests
       - name: Runs gradle e2e tests
-        timeout-minutes: 10
+        timeout-minutes: 15
         continue-on-error: true
         run: ./gradlew docker
 
