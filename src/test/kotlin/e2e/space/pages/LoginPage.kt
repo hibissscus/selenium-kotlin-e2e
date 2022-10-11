@@ -36,7 +36,7 @@ class LoginPage(driver: WebDriver) : BasePage(driver) {
     }
 
     override fun opened(s: String): LoginPage = apply {
-        waitForSeconds(2)
+        waitForSeconds(1)
         if (isPresent(By.cssSelector(frame_))) {
             frameToBeAvailableAndSwitchToIt(frame)
         }
