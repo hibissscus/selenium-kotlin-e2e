@@ -1,7 +1,6 @@
 package e2e.space.test.todo
 
 import e2e.space.model.User
-import e2e.space.pages.BasePage.Companion.loaded
 import e2e.space.pages.TodoPage
 import e2e.space.test.login.LoginTestBase
 import org.testng.annotations.Test

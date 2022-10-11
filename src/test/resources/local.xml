@@ -23,9 +23,4 @@
             <package name="e2e.space.test.todo"/>
         </packages>
     </test>
-    <test parallel="classes" name="reportng" thread-count="1">
-        <packages>
-            <package name="reportng"/>
-        </packages>
-    </test>
 </suite>
