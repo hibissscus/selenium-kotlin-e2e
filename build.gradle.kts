@@ -26,7 +26,10 @@ dependencies {
     implementation("com.github.hibissscus:testee:1.6.5")
 }
 
-fun Test.testNG(desc: String, suite: String, reportngTitle: String = "test", pushToSlack: Boolean = false, slackChannel: String = "test") {
+fun Test.testNG(
+    desc: String, suite: String, reportngTitle: String = "test",
+    zip: Boolean = false, pushToSlack: Boolean = false, slackChannel: String = "test"
+) {
     description = desc
     group = "verification"
     outputs.upToDateWhen { false }
@@ -39,6 +42,7 @@ fun Test.testNG(desc: String, suite: String, reportngTitle: String = "test", pus
         listeners = setOf("testee.it.reportng.HTMLReporter")
         systemProperties = mapOf(
             "testee.it.reportng.title" to reportngTitle,
+            "testee.it.reportng.zip" to zip,
             "testee.it.reportng.slack" to pushToSlack,
             "testee.it.reportng.slack.token" to "xoxb-570287064214-2443726642001-fFC8nApKmOqFt6JGAOFx69xb",
             "testee.it.reportng.slack.channel" to slackChannel
@@ -53,7 +57,7 @@ tasks {
 }
 
 tasks.register<Test>("docker") {
-    testNG("run entire space e2e test suite in docker", "src/test/resources/docker.xml", "e2e-space-docker")
+    testNG("run entire space e2e test suite in docker", "src/test/resources/docker.xml", "e2e-space-docker", true)
 }
 
 dockerCompose {
