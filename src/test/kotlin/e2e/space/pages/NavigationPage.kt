@@ -90,10 +90,10 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = ".icon-sign-out")
     private lateinit var signOut: WebElement
 
-    open fun <T : BasePage> goToPage(element: WebElement, page: T): T = page.apply {
-        if (isClickable(element)) view(element, this) else {
+    open fun <T : BasePage> goToPage(element: WebElement, page: T, title: String = ""): T = page.apply {
+        if (isClickable(element)) view(element, this, title) else {
             switchOnQuickAccessPage(page)
-            view(element, this)
+            view(element, this, title)
         }
     }
 
@@ -120,7 +120,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         when (page) {
             is AdminPage -> goToPage(administration, page)
             is BlogPage -> goToPage(blog, page)
-            is LoginPage -> click(logout).also { goToPage(signOut, page) }
+            is LoginPage -> click(logout).also { goToPage(signOut, page, "e2e") }
             is ProjectPage -> goToPage(projects, page)
             is TeamPage -> goToPage(teams, page)
             is TodoPage -> goToPage(todoList, page)

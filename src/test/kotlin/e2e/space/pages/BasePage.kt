@@ -23,6 +23,10 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
         return 1
     }
 
+    override fun waitMax(): Long {
+        return 10
+    }
+
     abstract fun opened(s: String = ""): BasePage
 
     open fun loaded(): BasePage = apply {

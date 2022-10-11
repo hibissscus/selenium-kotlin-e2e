@@ -11,7 +11,6 @@ open class LoginTestBase : TestBase(url = Url.SPACE.url) {
 
     fun login(user: User): HomePage {
         return LoginPage(driver)
-            .navigate(url)
             .opened("e2e")
             .login(user)
             .view(HomePage(driver))

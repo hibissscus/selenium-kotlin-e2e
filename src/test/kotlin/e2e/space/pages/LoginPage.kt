@@ -1,6 +1,7 @@
 package e2e.space.pages
 
 import e2e.space.model.User
+import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
@@ -35,12 +36,11 @@ class LoginPage(driver: WebDriver) : BasePage(driver) {
     }
 
     override fun opened(s: String): LoginPage = apply {
-        frameToBeAvailableAndSwitchToIt(frame)
+        waitForSeconds(2)
+        if (isPresent(By.cssSelector(frame_))) {
+            frameToBeAvailableAndSwitchToIt(frame)
+        }
         textToBe(realmName, s)
-    }
-
-    override fun navigate(url: String): LoginPage = apply {
-        driver().navigate().to(url)
     }
 
     private fun login(usernameText: String, passwordText: String): LoginPage = apply {

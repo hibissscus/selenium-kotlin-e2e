@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite verbose="1" configfailurepolicy="continue" thread-count="3" parallel="tests" name="e2e">
+<suite verbose="1" configfailurepolicy="continue" thread-count="4" parallel="tests" name="e2e">
     <parameter name="selenium" value="http://localhost:4444"/>
     <parameter name="url" value="https://e2e.jetbrains.space"/>
     <parameter name="browser" value="CHROME"/>

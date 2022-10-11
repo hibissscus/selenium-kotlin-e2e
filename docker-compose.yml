@@ -16,7 +16,7 @@ services:
   chrome:
     image: selenium/node-chrome:4.5.0-20221004
     deploy:
-      replicas: 3
+      replicas: 4
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
