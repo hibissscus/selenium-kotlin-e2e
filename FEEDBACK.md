@@ -24,6 +24,7 @@
     - Добавлен файл `.space.kts` для запуска тестов в `Space automation`
     - В процессе выполнения задачи в `Space automation` запускается докер с нодами хрома, выполняются тесты и формируется отчет, который загружается
       как артефакт в файловый репозиторий Space. ![jobs.png](feedback/jobs.png)
+    - Результаты теста можно загрузить как `zip` архив. ![zip-archive.png](feedback/zip-archive.png)
 - [x] docker-compose - зачем 3 ноды хрома? Можно скалировать сервис.
     - Замечание исправлено, в `docker-compose` добавлен параметр `deploy: replicas: 3`, скалирующий ноду хрому до трех экземпляров для параллельного
       выполнения тестов ![chrome-replicas.png](feedback/chrome-replicas.png)

@@ -28,13 +28,13 @@ class TeamPage(driver: WebDriver) : NavigationPage(driver) {
         return "/team"
     }
 
-    override fun name(): String {
+    override fun title(): String {
         return PageTitles.TEAMS.title
     }
 
     override fun opened(s: String): TeamPage = apply {
         urlContains(href())
-        textToBe(sidebarHeader, name())
+        textToBe(sidebarHeader, title())
     }
 
     fun selectTab(tabName: String): TeamPage = apply {

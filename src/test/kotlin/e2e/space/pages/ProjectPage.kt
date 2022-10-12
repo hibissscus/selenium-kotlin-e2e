@@ -18,13 +18,13 @@ class ProjectPage(driver: WebDriver) : NavigationPage(driver) {
         return "/p"
     }
 
-    override fun name(): String {
+    override fun title(): String {
         return PageTitles.PROJECTS.title
     }
 
     override fun opened(s: String): ProjectPage = apply {
         urlContains(href())
-        textToBe(pageHeader, name())
+        textToBe(pageHeader, title())
         textToBe(newProject, "New project")
     }
 }

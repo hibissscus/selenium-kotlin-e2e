@@ -19,13 +19,13 @@ class AdminPage(driver: WebDriver) : NavigationPage(driver) {
         return "/manage"
     }
 
-    override fun name(): String {
+    override fun title(): String {
         return PageTitles.ADMINISTRATION.title
     }
 
     override fun opened(s: String): AdminPage = apply {
         urlContains(href())
-        textToBe(sidebarHeader, name())
+        textToBe(sidebarHeader, title())
         textToBe(By.cssSelector(menuSubtitle_), "Organization")
     }
 

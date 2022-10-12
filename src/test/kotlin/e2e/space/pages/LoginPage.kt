@@ -1,5 +1,6 @@
 package e2e.space.pages
 
+import e2e.space.model.PageTitles
 import e2e.space.model.User
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
@@ -35,8 +36,12 @@ class LoginPage(driver: WebDriver) : BasePage(driver) {
         return "/sign-in"
     }
 
+    override fun title(): String {
+        return PageTitles.SIGN_IN.title
+    }
+
     override fun opened(s: String): LoginPage = apply {
-        titleIs("Sign In — Space")
+        titleIs(title())
         if (isPresent(By.cssSelector(frame_))) {
             frameToBeAvailableAndSwitchToIt(frame)
         }

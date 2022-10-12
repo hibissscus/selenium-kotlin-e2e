@@ -28,7 +28,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     @FindBy(css = newTask_)
     private lateinit var newTask: WebElement
 
-    override fun name(): String {
+    override fun title(): String {
         return PageTitles.TODO.title
     }
 

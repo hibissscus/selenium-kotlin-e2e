@@ -113,7 +113,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     }
 
     fun <T : BasePage> switchOnQuickAccessPage(page: T): NavigationPage = apply {
-        switchAllQuickAccessPages(true, page.name())
+        switchAllQuickAccessPages(true, page.title())
     }
 
     open fun <T : BasePage> goTo(page: T): T = page.apply {

@@ -18,13 +18,13 @@ class BlogPage(driver: WebDriver) : NavigationPage(driver) {
         return "/blog"
     }
 
-    override fun name(): String {
+    override fun title(): String {
         return PageTitles.BLOG.title
     }
 
     override fun opened(s: String): BlogPage = apply {
         urlContains(href())
-        textToBe(sidebarHeader, name())
+        textToBe(sidebarHeader, title())
         textToBe(newArticle, "New article")
     }
 

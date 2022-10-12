@@ -41,7 +41,7 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
         return null
     }
 
-    open fun name(): String? {
+    open fun title(): String? {
         return null
     }
 
