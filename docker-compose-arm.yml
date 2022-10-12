@@ -16,7 +16,7 @@ services:
   chrome:
     image: seleniarm/node-chromium
     deploy:
-      replicas: 4
+      replicas: 2
     shm_size: 512m
     volumes:
       - downloads:/home/seluser/
