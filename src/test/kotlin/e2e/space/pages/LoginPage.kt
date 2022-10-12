@@ -42,6 +42,7 @@ class LoginPage(driver: WebDriver) : BasePage(driver) {
 
     override fun opened(s: String): LoginPage = apply {
         titleIs(title())
+        urlContains(href())
         if (isPresent(By.cssSelector(frame_))) {
             frameToBeAvailableAndSwitchToIt(frame)
         }

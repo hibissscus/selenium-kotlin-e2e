@@ -5,6 +5,7 @@ import e2e.space.pages.AdminPage
 import e2e.space.pages.BlogPage
 import e2e.space.pages.HomePage
 import e2e.space.pages.ProjectPage
+import e2e.space.pages.SearchPage
 import e2e.space.pages.TeamPage
 import e2e.space.pages.TodoPage
 import e2e.space.test.login.LoginTestBase
@@ -19,6 +20,7 @@ class NavigationTest : LoginTestBase() {
             .switchAllQuickAccessPages(false)
             .switchAllQuickAccessPages(true)
             .switchAllQuickAccessPages(false)
+            .switchOnQuickAccessPage(SearchPage(driver))
             .switchOnQuickAccessPage(TodoPage(driver))
             .switchOnQuickAccessPage(ProjectPage(driver))
             .switchOnQuickAccessPage(BlogPage(driver))

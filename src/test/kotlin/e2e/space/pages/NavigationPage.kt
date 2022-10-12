@@ -1,6 +1,7 @@
 package e2e.space.pages
 
 import e2e.space.model.Availability
+import e2e.space.pages.dialog.AbsencePage
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -66,6 +67,9 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = ".XApplicationSidebarStyles-drawer")
     private lateinit var rootWithFullSidebar: WebElement
 
+    @FindBy(css = "[aria-label='Search']$navigationItem_")
+    private lateinit var search: WebElement
+
     @FindBy(css = "[aria-label='Chats']$navigationItem_")
     private lateinit var chats: WebElement
 
@@ -83,6 +87,9 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
     @FindBy(css = "[aria-label='To-Do List']$navigationDropdownItem_")
     private lateinit var todoList: WebElement
+
+    @FindBy(css = ".icon-create")
+    private lateinit var create: WebElement
 
     @FindBy(css = "[title='e2e']")
     private lateinit var logout: WebElement
@@ -124,6 +131,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
             is ProjectPage -> goToPage(projects, page)
             is TeamPage -> goToPage(teams, page)
             is TodoPage -> goToPage(todoList, page)
+            is SearchPage -> goToPage(search, page)
         }
     }
 
@@ -139,6 +147,12 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
     protected fun changeAvailability(on: Boolean, availabilityTime: Availability): NavigationPage = apply {
         click(availability)
+    }
+
+    open fun <T : BasePage> create(page: T): T = page.apply {
+        when (page) {
+            is AbsencePage -> goToPage(administration, page)
+        }
     }
 
     fun logout(): LoginPage {
