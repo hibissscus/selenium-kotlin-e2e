@@ -44,7 +44,7 @@ fun Test.testNG(
             "testee.it.reportng.title" to reportngTitle,
             "testee.it.reportng.zip" to zip,
             "testee.it.reportng.slack" to pushToSlack,
-            "testee.it.reportng.slack.token" to "xoxb-570287064214-2443726642001-fFC8nApKmOqFt6JGAOFx69xb",
+            "testee.it.reportng.slack.token" to "xxxx-xxxxxxxxxxxx-xxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxx",
             "testee.it.reportng.slack.channel" to slackChannel
         )
     }
