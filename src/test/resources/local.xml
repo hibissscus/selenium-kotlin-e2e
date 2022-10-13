@@ -23,4 +23,9 @@
             <package name="e2e.space.test.todo"/>
         </packages>
     </test>
+    <test parallel="classes" name="search" thread-count="1">
+        <packages>
+            <package name="e2e.space.test.search"/>
+        </packages>
+    </test>
 </suite>

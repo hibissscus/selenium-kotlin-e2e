@@ -1,5 +1,6 @@
 package e2e.space.pages
 
+import e2e.space.model.PageTitles
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -13,6 +14,10 @@ class SearchPage(driver: WebDriver) : NavigationPage(driver) {
 
     @FindBy(css = searchInput_)
     private lateinit var searchInput: WebElement
+
+    override fun title(): String {
+        return PageTitles.SEARCH.title
+    }
 
     override fun opened(s: String): SearchPage = apply {
         visible(searchInput)

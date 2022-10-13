@@ -5,12 +5,12 @@ import e2e.space.pages.SearchPage
 import e2e.space.test.login.LoginTestBase
 import org.testng.annotations.Test
 
-@Test(groups = ["team"])
+@Test(groups = ["search"])
 class SearchTest : LoginTestBase() {
 
     @Test
     fun `can navigate to search page`() {
-        login(User.KING)
+        login(User.ROOK)
             .goTo(SearchPage(driver))
             .close()
     }

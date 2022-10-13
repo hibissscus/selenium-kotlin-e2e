@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
+
 abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
     companion object Path {
@@ -22,6 +23,8 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         const val bell_ = ".icon-bell-small"
         const val bellCrossed_ = ".icon-bell-crossed-small"
 
+        const val navigationTopPart_ = ".NavigationBarStyles-topPart"
+        const val navigationBottomPart_ = ".NavigationBarStyles-bottomPart"
         const val navigationItem_ = ".AppStyles-Navigation-item"
         const val navigationDropdownItem_ = ".XApplicationSidebarStyles-dropdownItem"
         const val quickAccessListItem_ = ".QuickAccessPanelStyles-listItem"
@@ -60,6 +63,12 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         isInvisible(loader)
         attributeContains(loader, "class", "XLoaderStyles-invisibleLoader")
     }
+
+    @FindBy(css = navigationTopPart_)
+    private lateinit var navigationTopPart: WebElement
+
+    @FindBy(css = navigationBottomPart_)
+    private lateinit var navigationBottomPart: WebElement
 
     @FindBy(css = ".NavigationBarStyles-moreToggle")
     private lateinit var more: WebElement
