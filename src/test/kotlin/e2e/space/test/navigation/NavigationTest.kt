@@ -4,7 +4,7 @@ import e2e.space.model.User
 import e2e.space.pages.AdminPage
 import e2e.space.pages.BlogPage
 import e2e.space.pages.HomePage
-import e2e.space.pages.ProjectPage
+import e2e.space.pages.ProjectsPage
 import e2e.space.pages.SearchPage
 import e2e.space.pages.TeamPage
 import e2e.space.pages.TodoPage
@@ -22,7 +22,7 @@ class NavigationTest : LoginTestBase() {
             .switchAllQuickAccessPages(false)
             .switchOnQuickAccessPage(SearchPage(driver))
             .switchOnQuickAccessPage(TodoPage(driver))
-            .switchOnQuickAccessPage(ProjectPage(driver))
+            .switchOnQuickAccessPage(ProjectsPage(driver))
             .switchOnQuickAccessPage(BlogPage(driver))
             .switchOnQuickAccessPage(TeamPage(driver))
             .switchOnQuickAccessPage(AdminPage(driver))
@@ -33,7 +33,7 @@ class NavigationTest : LoginTestBase() {
     fun `can switch between pages`() {
         HomePage(driver)
             .goTo(TodoPage(driver))
-            .goTo(ProjectPage(driver))
+            .goTo(ProjectsPage(driver))
             .goTo(BlogPage(driver))
             .goTo(TeamPage(driver))
             .goTo(AdminPage(driver))

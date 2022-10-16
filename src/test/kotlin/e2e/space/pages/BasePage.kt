@@ -27,6 +27,8 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
         return 25
     }
 
+    abstract fun title(): String
+
     abstract fun opened(s: String = ""): BasePage
 
     open fun loaded(): BasePage = apply {
@@ -38,10 +40,6 @@ abstract class BasePage(driver: WebDriver) : AbstractPage(driver) {
     }
 
     open fun href(): String? {
-        return null
-    }
-
-    open fun title(): String? {
         return null
     }
 

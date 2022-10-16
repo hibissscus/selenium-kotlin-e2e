@@ -1,4 +1,4 @@
-package e2e.space.pages.dialog
+package e2e.space.pages.create
 
 import e2e.space.model.PageTitles
 import org.openqa.selenium.WebDriver

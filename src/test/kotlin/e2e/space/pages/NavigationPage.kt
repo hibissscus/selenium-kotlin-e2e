@@ -1,7 +1,7 @@
 package e2e.space.pages
 
 import e2e.space.model.Availability
-import e2e.space.pages.dialog.AbsencePage
+import e2e.space.pages.create.AbsencePage
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -137,7 +137,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
             is AdminPage -> goToPage(administration, page)
             is BlogPage -> goToPage(blog, page)
             is LoginPage -> click(logout).also { goToPage(signOut, page, "e2e") }
-            is ProjectPage -> goToPage(projects, page)
+            is ProjectsPage -> goToPage(projects, page)
             is TeamPage -> goToPage(teams, page)
             is TodoPage -> goToPage(todoList, page)
             is SearchPage -> goToPage(search, page)

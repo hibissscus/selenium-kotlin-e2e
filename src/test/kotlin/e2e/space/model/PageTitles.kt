@@ -9,5 +9,11 @@ enum class PageTitles(val title: String) {
     ADMINISTRATION("Administration"),
     TODO("To-Do List"),
 
-    ABSENCE("New Absence")
+    ABSENCE("Absence"),
+    BLOG_POST("Blog Post"),
+    CHANNEL("Channel"),
+    CODE_REVIEW("Code Review"),
+    DOCUMENT("Document"),
+    MERGE_REQUEST("Merge Request"),
+    PROJECT("Project"),
 }

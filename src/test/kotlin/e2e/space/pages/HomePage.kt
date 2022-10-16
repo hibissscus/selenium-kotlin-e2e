@@ -23,6 +23,10 @@ class HomePage(driver: WebDriver) : NavigationPage(driver) {
         textToBe(title, "Personal navigation")
     }
 
+    override fun title(): String {
+        return ""
+    }
+
     fun isUserNamePresent(user: User): HomePage = apply {
         isUserNamePresent(user.uiName)
     }

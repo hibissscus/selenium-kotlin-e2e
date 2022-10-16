@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-class ProjectPage(driver: WebDriver) : NavigationPage(driver) {
+class ProjectsPage(driver: WebDriver) : NavigationPage(driver) {
 
     companion object Path {
         const val newProject_ = ".XButtonStyles-button"
@@ -22,7 +22,7 @@ class ProjectPage(driver: WebDriver) : NavigationPage(driver) {
         return PageTitles.PROJECTS.title
     }
 
-    override fun opened(s: String): ProjectPage = apply {
+    override fun opened(s: String): ProjectsPage = apply {
         urlContains(href())
         textToBe(pageHeader, title())
         textToBe(newProject, "New project")
