@@ -5,7 +5,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
-import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.FindBy
 import kotlin.random.Random
 
@@ -21,7 +20,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
         const val itemCheckbox = "TodoItemComponentStyles-itemCheckbox"
         const val itemCheckboxChecked = "XCheckboxStyles-checkboxChecked"
         const val itemCheckboxUnchecked = "XCheckboxStyles-checkboxPlain"
-        const val actionButtonDelete_ = ".MessageActionsPopupStyles-actionButtonDelete"
+        const val actionButtonDelete_ = "[aria-label='Delete']"
         const val notification_ = "SingleActionNotificationStyles-notification"
     }
 
@@ -67,16 +66,12 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     fun deleteTask(taskName: String): TodoPage = apply {
-        Actions(driver).moveToElement(
-            presence(
-                By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"),
-            )
-        ).pause(300).click().perform()
-        Actions(driver).moveToElement(
+        click(By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"))
+        click(
             presenceOfNestedElementLocatedBy(
                 By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"), By.cssSelector(actionButtonDelete_)
             )
-        ).pause(300).click().perform()
+        )
         visibilityOfAllElementsLocatedBy(
             By.xpath("//*[contains(@class,'$notification_')]//*[contains(text(),'Undo')]")
         )
