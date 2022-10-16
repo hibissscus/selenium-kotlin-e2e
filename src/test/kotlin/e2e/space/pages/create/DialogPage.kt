@@ -1,5 +1,6 @@
 package e2e.space.pages.create
 
+import e2e.space.pages.BasePage
 import e2e.space.pages.NavigationPage
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -11,6 +12,7 @@ open class DialogPage(driver: WebDriver) : NavigationPage(driver) {
         const val dialog_ = "#dialog"
         const val dialogElement_ = ".XDialogStyles-dialogElement"
         const val close_ = ".XDialogStyles-closeIcon"
+        const val submit_ = "button[type='submit'].XButtonStyles-button"
     }
 
     @FindBy(css = dialog_)
@@ -22,12 +24,19 @@ open class DialogPage(driver: WebDriver) : NavigationPage(driver) {
     @FindBy(css = close_)
     private lateinit var close: WebElement
 
+    @FindBy(css = submit_)
+    private lateinit var submit: WebElement
+
     override fun title(): String {
         return ""
     }
 
     override fun opened(s: String): DialogPage = apply {
         textToBe(dialogElement, s)
+    }
+
+    open fun submit(): BasePage = apply {
+        click(submit)
     }
 
     fun close(): DialogPage = apply {

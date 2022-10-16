@@ -1,6 +1,5 @@
 package e2e.space.pages
 
-import e2e.space.model.Availability
 import e2e.space.pages.create.AbsencePage
 import e2e.space.pages.create.BlogPostPage
 import e2e.space.pages.create.ChannelPage
@@ -23,11 +22,13 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
         const val sidebarHeader_ = ".AppStyles-Sidebar-sidebarHeader"
         const val pageHeader_ = ".XStyles-pageHeader"
+        const val heading_ = "[role='heading']"
         const val tabs_ = ".XTabsStyles-tabs"
         const val availability_ = "[data-spotlight-hint-id-cbbcehiace-availability-status*= 'availability-status']"
         const val moon_ = ".icon-moon-small"
         const val bell_ = ".icon-bell-small"
         const val bellCrossed_ = ".icon-bell-crossed-small"
+        const val listitem_ = "[@role='listitem']"
 
         const val navigationTopPart_ = ".NavigationBarStyles-topPart"
         const val navigationBottomPart_ = ".NavigationBarStyles-bottomPart"
@@ -177,10 +178,6 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
         click(tabElement)
         attributeContains(tabElement, "class", "XTabsStyles-tab")
         attributeContains(tabElement, "class", "XTabsStyles-selectedTab")
-    }
-
-    protected fun changeAvailability(on: Boolean, availabilityTime: Availability): NavigationPage = apply {
-        click(availability)
     }
 
     open fun <T : BasePage> create(page: T): T = page.apply {

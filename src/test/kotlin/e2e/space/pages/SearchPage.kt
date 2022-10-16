@@ -12,7 +12,6 @@ class SearchPage(driver: WebDriver) : NavigationPage(driver) {
 
     companion object Path {
         const val searchInput_ = "input[placeholder='Go to anything'], input[placeholder='Type to search']"
-        const val listitem_ = "[@role='listitem']"
     }
 
     @FindBy(css = searchInput_)

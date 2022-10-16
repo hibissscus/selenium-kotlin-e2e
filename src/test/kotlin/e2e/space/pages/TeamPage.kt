@@ -1,7 +1,7 @@
 package e2e.space.pages
 
-import e2e.space.model.Availability
 import e2e.space.model.PageTitles
+import e2e.space.model.User
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -13,6 +13,7 @@ class TeamPage(driver: WebDriver) : NavigationPage(driver) {
         const val teamDirectory_ = ".TeamDirectoryStyles-tabContent"
         const val memberFilter_ = "input[placeholder='Type to filter'].XTextFieldStyles-textField"
         const val memberProfileCard_ = ".MemberProfileCardStyles-container"
+        const val memberName_ = ".MemberProfileCardStyles-memberName"
     }
 
     @FindBy(css = teamDirectory_)
@@ -23,6 +24,9 @@ class TeamPage(driver: WebDriver) : NavigationPage(driver) {
 
     @FindBy(css = memberProfileCard_)
     private lateinit var memberProfileCard: WebElement
+
+    @FindBy(css = memberName_)
+    private lateinit var memberName: WebElement
 
     override fun href(): String {
         return "/team"
@@ -47,8 +51,9 @@ class TeamPage(driver: WebDriver) : NavigationPage(driver) {
         textToBe(By.cssSelector(memberProfileCard_), memberName)
     }
 
-    fun changeAvailability(): TeamPage = apply {
-        changeAvailability(true, Availability.HOURS_1)
+    fun viewProfilePage(user: User): ProfilePage {
+        click(By.xpath("//*[contains(@href,'${user.username}') and ancestor-or-self::*[contains(@class,'MemberProfileCardStyles-memberName')]]"))
+        return view(ProfilePage(driver), user.uiName)
     }
 
 }

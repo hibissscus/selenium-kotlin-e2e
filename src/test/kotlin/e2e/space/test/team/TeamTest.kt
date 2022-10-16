@@ -25,11 +25,4 @@ class TeamTest : LoginTestBase() {
             }
     }
 
-    @Test(dependsOnMethods = ["can navigate to team page"])
-    fun `change member availability`() {
-        TeamPage(driver)
-            .changeAvailability()
-            .selectTab("Members")
-            .selectMember(User.QUEEN.uiName)
-    }
 }
