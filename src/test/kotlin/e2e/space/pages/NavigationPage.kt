@@ -2,6 +2,12 @@ package e2e.space.pages
 
 import e2e.space.model.Availability
 import e2e.space.pages.create.AbsencePage
+import e2e.space.pages.create.BlogPostPage
+import e2e.space.pages.create.ChannelPage
+import e2e.space.pages.create.CodeReviewPage
+import e2e.space.pages.create.DocumentPage
+import e2e.space.pages.create.MergeRequestPage
+import e2e.space.pages.create.ProjectPage
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -100,6 +106,9 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = ".icon-create")
     private lateinit var create: WebElement
 
+    @FindBy(css = "[role='menu'].XPopupWrapperStyles-popupWrapper")
+    private lateinit var menu: WebElement
+
     @FindBy(css = "[title='e2e']")
     private lateinit var logout: WebElement
 
@@ -111,6 +120,13 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
             switchOnQuickAccessPage(page)
             view(element, this, title)
         }
+    }
+
+    open fun <T : BasePage> goToCreatePage(element: WebElement, page: T, title: String = ""): T = page.apply {
+        click(element)
+        visible(menu)
+        click(By.xpath("//*[@role='menuitem'][.//*[contains(text(),'${page.title()}')]]"))
+        view(page)
     }
 
     fun switchAllQuickAccessPages(on: Boolean = true, pageName: String? = null): NavigationPage = apply {
@@ -134,6 +150,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
 
     open fun <T : BasePage> goTo(page: T): T = page.apply {
         when (page) {
+            // quick pages
             is AdminPage -> goToPage(administration, page)
             is BlogPage -> goToPage(blog, page)
             is LoginPage -> click(logout).also { goToPage(signOut, page, "e2e") }
@@ -141,6 +158,14 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
             is TeamPage -> goToPage(teams, page)
             is TodoPage -> goToPage(todoList, page)
             is SearchPage -> goToPage(search, page)
+            // create pages
+            is AbsencePage -> goToCreatePage(create, page)
+            is BlogPostPage -> goToCreatePage(create, page)
+            is ChannelPage -> goToCreatePage(create, page)
+            is CodeReviewPage -> goToCreatePage(create, page)
+            is DocumentPage -> goToCreatePage(create, page)
+            is MergeRequestPage -> goToCreatePage(create, page)
+            is ProjectPage -> goToCreatePage(create, page)
         }
     }
 

@@ -30,7 +30,7 @@ class NavigationTest : LoginTestBase() {
     }
 
     @Test(dependsOnMethods = ["navigation quick access pages"])
-    fun `can switch between pages`() {
+    fun `can switch between quick pages`() {
         HomePage(driver)
             .goTo(TodoPage(driver))
             .goTo(ProjectsPage(driver))
