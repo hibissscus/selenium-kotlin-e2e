@@ -66,7 +66,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     fun deleteTask(taskName: String): TodoPage = apply {
-        click(By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"))
+        click(By.xpath("//*[contains(text(),'${taskName}') and ancestor-or-self::*$listitem_]"))
         click(
             presenceOfNestedElementLocatedBy(
                 By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"), By.cssSelector(actionButtonDelete_)
