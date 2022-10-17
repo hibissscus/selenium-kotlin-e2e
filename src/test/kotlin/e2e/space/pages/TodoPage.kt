@@ -21,11 +21,15 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
         const val itemCheckboxChecked = "XCheckboxStyles-checkboxChecked"
         const val itemCheckboxUnchecked = "XCheckboxStyles-checkboxPlain"
         const val actionButtonDelete_ = "[aria-label='Delete']"
-        const val notification_ = "SingleActionNotificationStyles-notification"
+        const val notifications_ = "//*[contains(@class,'SingleActionNotificationStyles-notification')]//*[contains(text(),'Undo')]"
     }
 
     @FindBy(css = newTask_)
     private lateinit var newTask: WebElement
+
+    @FindBy(xpath = notifications_)
+    private lateinit var notifications: List<WebElement>
+
 
     override fun title(): String {
         return PageTitles.TODO.title
@@ -58,13 +62,6 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
         selectUnselectTask(taskName, false)
     }
 
-    fun deleteAllTasks(): TodoPage = apply {
-        if (isPresent(By.xpath("//*[@role='listitem']"))) {
-            val todos = presenceOfAllElementsLocatedBy(By.xpath("//*[@role='listitem']")).map { it.text }.toList()
-            todos.forEach { deleteTask(it) }
-        }
-    }
-
     fun deleteTask(taskName: String): TodoPage = apply {
         click(By.xpath("//*[contains(text(),'${taskName}') and ancestor-or-self::*$listitem_]"))
         click(
@@ -72,15 +69,11 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
                 By.xpath("//*[@role='listitem'][.//*[contains(text(),'${taskName}')]]"), By.cssSelector(actionButtonDelete_)
             )
         )
-        visibilityOfAllElementsLocatedBy(
-            By.xpath("//*[contains(@class,'$notification_')]//*[contains(text(),'Undo')]")
-        )
+        visibilityOfAllElementsLocatedBy(By.xpath(notifications_))
         waitForLoaded()
     }
 
     fun undoDeletedTask(): TodoPage = apply {
-        visibilityOfAllElementsLocatedBy(
-            By.xpath("//*[contains(@class,'$notification_')]//*[contains(text(),'Undo')]")
-        ).first().click()
+        visibilityOfAllElementsLocatedBy(By.xpath(notifications_)).first().click()
     }
 }
