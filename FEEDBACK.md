@@ -54,7 +54,7 @@
       IDEA" ![gradle.png](feedback/gradle.png)
 - [x] Хочется ссылку на репорт в логе прогона тестов.
     - Добавлена ссылка в лог на отчет с результатами запуска теста ![report.png](feedback/report-link.png)
-    - По данной ссылке можно открыть в любом удобном браузере `html` отчет c результатами теста ![report-local.png](feedback/report-local.png)
+    - По данной ссылке можно открыть в любом удобном браузере `html` отчет с результатами теста ![report-local.png](feedback/report-local.png)
 
 - [x] 3 ноды браузеров - тесты параллелятся?
     - Да, тесты параллелятся с помощью `testNG`, используется параметр `thread-count` внутри `docker.xml`. Тесты запускаются в трех потоках, для этого
@@ -85,6 +85,7 @@
     - В `build.gradle.kts` добавлен плагин `docker-compose` запускающий в докер-контейнере selenium hub и selenium ноды хрома для параллельного
       запуска e2e тестов. В результате запуска тест кейсов формируется отчет доступный по ссылке в логе.
       ``./gradlew docker`` ![docker-report-link.png](feedback/docker-report-link.png)
+    - По данной ссылке можно открыть в любом удобном браузере `html` отчет с результатами теста ![docker-report.png](feedback/docker-report.png)
     - Также результат запуска тестов в докере на GitHub Actions можно посмотреть на странице
       Actions: https://github.com/hibissscus/selenium-kotlin-e2e/actions
       в любом из последних запусков и загрузить в виде zip архива ![img.png](feedback/github-actions.png)
