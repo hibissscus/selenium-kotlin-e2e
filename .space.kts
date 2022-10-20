@@ -5,6 +5,7 @@
 
 job("Build and run e2e tests using docker") {
     startOn {
+        schedule { cron("0 2 * * *") }
         gitPush {}
     }
 
