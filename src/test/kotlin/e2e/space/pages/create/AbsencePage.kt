@@ -52,7 +52,7 @@ class AbsencePage(driver: WebDriver) : DialogPage(driver) {
     }
 
     fun selectReason(absenceReason: AbsenceReason): AbsencePage = apply {
-        click(reason)
+        sendText(By.cssSelector(reason_ + ", input[value='${absenceReason.value}'].XTextFieldStyles-textField"), absenceReason.value)
         click(By.xpath("//*[contains(text(),'${absenceReason.value}') and ancestor-or-self::*${listitem_}]"))
         visible(By.cssSelector("input[value='${absenceReason.value}'].XTextFieldStyles-textField"))
     }
