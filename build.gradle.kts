@@ -19,7 +19,7 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     // selenium
-    implementation("org.seleniumhq.selenium:selenium-java:4.5.0")
+    implementation("org.seleniumhq.selenium:selenium-java:4.5.3")
     // testng
     implementation("org.testng:testng:7.6.1")
     // testee + reportng
