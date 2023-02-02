@@ -2,8 +2,8 @@ import org.gradle.internal.os.OperatingSystem
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version ("1.7.20")
-    id("com.avast.gradle.docker-compose") version ("0.16.9")
+    id("org.jetbrains.kotlin.jvm") version ("1.8.0")
+    id("com.avast.gradle.docker-compose") version ("0.16.11")
 }
 
 group = "ys-e2e"
@@ -19,11 +19,11 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     // selenium
-    implementation("org.seleniumhq.selenium:selenium-java:4.5.3")
+    implementation("org.seleniumhq.selenium:selenium-java:4.8.0")
     // testng
     implementation("org.testng:testng:7.6.1")
     // testee + reportng
-    implementation("com.github.hibissscus:testee:1.6.5")
+    implementation("com.github.hibissscus:testee:1.6.8")
 }
 
 fun Test.testNG(

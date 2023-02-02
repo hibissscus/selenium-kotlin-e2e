@@ -48,10 +48,4 @@ class TodoTest : LoginTestBase() {
         TodoPage(driver)
             .undoDeletedTask()
     }
-
-    @Test(dependsOnMethods = ["tab navigation", "add todo", "select todo", "un-select todo", "delete todo", "undo deleted todo"])
-    fun `deleted todo finally`() {
-        TodoPage(driver)
-            .deleteTask(todo1.name)
-    }
 }

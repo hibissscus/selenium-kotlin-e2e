@@ -1,12 +1,6 @@
 package e2e.space.pages
 
-import e2e.space.pages.create.AbsencePage
-import e2e.space.pages.create.BlogPostPage
-import e2e.space.pages.create.ChannelPage
-import e2e.space.pages.create.CodeReviewPage
-import e2e.space.pages.create.DocumentPage
-import e2e.space.pages.create.MergeRequestPage
-import e2e.space.pages.create.ProjectPage
+import e2e.space.pages.create.*
 import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
@@ -83,7 +77,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = ".XApplicationSidebarStyles-drawer")
     private lateinit var rootWithFullSidebar: WebElement
 
-    @FindBy(css = "[aria-label='Search']$navigationItem_")
+    @FindBy(css = ".icon-search-line")
     private lateinit var search: WebElement
 
     @FindBy(css = "[aria-label='Chats']$navigationItem_")
@@ -101,7 +95,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = "[aria-label='Administration']$navigationItem_")
     private lateinit var administration: WebElement
 
-    @FindBy(css = "[aria-label='To-Do List']$navigationDropdownItem_")
+    @FindBy(css = ".icon-todo-line")
     private lateinit var todoList: WebElement
 
     @FindBy(css = ".icon-create")
@@ -110,7 +104,7 @@ abstract class NavigationPage(driver: WebDriver) : BasePage(driver) {
     @FindBy(css = "[role='menu'].XPopupWrapperStyles-popupWrapper")
     private lateinit var menu: WebElement
 
-    @FindBy(css = "[title='e2e']")
+    @FindBy(css = ".XAvatarStyles-wrapper")
     private lateinit var logout: WebElement
 
     @FindBy(css = ".icon-sign-out")

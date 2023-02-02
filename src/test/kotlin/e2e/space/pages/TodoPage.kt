@@ -16,7 +16,7 @@ class TodoPage(driver: WebDriver) : NavigationPage(driver) {
     )
 
     companion object Path {
-        const val newTask_ = "[placeholder='Add a task'].XTextFieldStyles-textField"
+        const val newTask_ = "input[placeholder='Add a task']:not(.TodoWidgetStyles-input)"
         const val itemCheckbox = "TodoItemComponentStyles-itemCheckbox"
         const val itemCheckboxChecked = "XCheckboxStyles-checkboxChecked"
         const val itemCheckboxUnchecked = "XCheckboxStyles-checkboxPlain"

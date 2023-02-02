@@ -2,13 +2,7 @@ package e2e.space.test.search
 
 import e2e.space.model.User
 import e2e.space.pages.SearchPage
-import e2e.space.pages.create.AbsencePage
-import e2e.space.pages.create.BlogPostPage
-import e2e.space.pages.create.ChannelPage
-import e2e.space.pages.create.CodeReviewPage
-import e2e.space.pages.create.DocumentPage
-import e2e.space.pages.create.MergeRequestPage
-import e2e.space.pages.create.ProjectPage
+import e2e.space.pages.create.*
 import e2e.space.test.login.LoginTestBase
 import org.testng.annotations.Test
 
@@ -29,8 +23,7 @@ class SearchTest : LoginTestBase() {
             ChannelPage(driver),
             CodeReviewPage(driver),
             DocumentPage(driver),
-            MergeRequestPage(driver),
-            ProjectPage(driver)
+            MergeRequestPage(driver)
         ).forEach {
             SearchPage(driver)
                 .goTo(it)

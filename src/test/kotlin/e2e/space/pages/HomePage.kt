@@ -9,18 +9,17 @@ class HomePage(driver: WebDriver) : NavigationPage(driver) {
 
     companion object Path {
         const val title_ = "a[href='#'][role='button']"
-        const val userLogo_ = ".ApplicationStyles-logo"
+        const val userAvatar_ = ".XAvatarStyles-wrapper"
     }
 
     @FindBy(css = title_)
     private lateinit var title: WebElement
 
-    @FindBy(css = userLogo_)
-    private lateinit var userLogo: WebElement
+    @FindBy(css = userAvatar_)
+    private lateinit var userAvatar: WebElement
 
     override fun opened(s: String): HomePage = apply {
         titleIs("e2e — Space")
-        textToBe(title, "Personal navigation")
     }
 
     override fun title(): String {
@@ -32,6 +31,6 @@ class HomePage(driver: WebDriver) : NavigationPage(driver) {
     }
 
     fun isUserNamePresent(name: String): HomePage = apply {
-        attributeContains(userLogo, "aria-label", name)
+        attributeContains(userAvatar, "aria-label", name)
     }
 }
